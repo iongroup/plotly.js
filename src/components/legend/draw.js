@@ -541,6 +541,7 @@ function drawTexts(g, gd, legendObj) {
         .call(Drawing.font, font)
         .text(isEditable ? ensureLength(name, maxNameLength) : name);
 
+    Lib.ensureSingle(g, 'title').text(name.replace("<br>", "\n"));
     var textGap = legendObj.itemwidth + constants.itemGap * 2;
     svgTextUtils.positionText(textEl, textGap, 0);
 
