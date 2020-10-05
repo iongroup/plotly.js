@@ -901,7 +901,7 @@ module.exports = {
         ].join(' ')
     },
     tickformat: {
-        valType: 'string',
+        valType: 'any',
         dflt: '',
         editType: 'ticks',
         description: descriptionWithDates('tick label')

@@ -730,7 +730,7 @@ function adjustPeriodDelta(ax) { // adjusts ax.dtick and sets ax._definedDelta
     }
     var isMDate = mDate();
     var tickformat = axes.getTickFormat(ax);
-    if(tickformat) {
+    if(typeof tickformat === "string") {
         var noDtick = ax._dtickInit !== ax.dtick;
         if(
             !(/%[fLQsSMX]/.test(tickformat))
@@ -1660,6 +1660,11 @@ axes.tickText = function(ax, x, hover, noSuffixPrefix) {
     else if(isAngular(ax)) formatAngle(ax, out, hover, extraPrecision, hideexp);
     else formatLinear(ax, out, hover, extraPrecision, hideexp);
 
+    var tickformat = axes.getTickFormat(ax);
+    if (typeof tickformat === "function") {
+        out.text = tickformat(out.text, out.x);
+    }
+
     // add prefix and suffix
     if(!noSuffixPrefix) {
         if(ax.tickprefix && !isHidden(ax.showtickprefix)) out.text = ax.tickprefix + out.text;
@@ -2026,7 +2031,9 @@ function numFormat(v, ax, fmtoverride, hover) {
         if(ax.hoverformat) tickformat = ax.hoverformat;
     }
 
-    if(tickformat) return ax._numFormat(tickformat)(v).replace(/-/g, MINUS_SIGN);
+    if(tickformat && typeof tickformat === "string") {
+        return ax._numFormat(tickformat)(v).replace(/-/g, MINUS_SIGN);
+    }
 
     // 'epsilon' - rounding increment
     var e = Math.pow(10, -tickRound) / 2;
