@@ -62,7 +62,7 @@ module.exports = function handleClick(g, gd, numClicks) {
             valueArray = dataUpdate.visible = [];
         }
 
-        if(dataIndices.indexOf(traceIndex) === -1) {
+        if(dataIndices.indexOf(traceIndex) < 0) {
             dataIndices.push(traceIndex);
             attrIndex = dataIndices.length - 1;
         }
@@ -289,7 +289,10 @@ module.exports = function handleClick(g, gd, numClicks) {
             }
         }
 
-        if(shapesUpdated) {
+        // Allows listeners to detect when plot visibility is toggled
+        gd.emit('plotly_legend_toggleVisible', { attrUpdate: dataUpdate, attrIndices: dataIndices });
+
+		if(shapesUpdated) {
             Registry.call('_guiUpdate', gd, dataUpdate, {shapes: updatedShapes}, dataIndices);
         } else {
             Registry.call('_guiRestyle', gd, dataUpdate, dataIndices);
