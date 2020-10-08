@@ -70,7 +70,7 @@
       "glslify"
     ]
   },
-  "dependencies": {
+  "devDependencies": {
     "@plotly/d3": "3.8.1",
     "@plotly/d3-sankey": "0.7.2",
     "@plotly/d3-sankey-circular": "0.33.1",
@@ -120,9 +120,7 @@
     "to-px": "1.0.1",
     "topojson-client": "^3.1.0",
     "webgl-context": "^2.2.0",
-    "world-calendars": "^1.0.3"
-  },
-  "devDependencies": {
+    "world-calendars": "^1.0.3",
     "@babel/plugin-transform-modules-commonjs": "^7.23.3",
     "@babel/preset-env": "^7.23.9",
     "amdefine": "^1.0.1",
