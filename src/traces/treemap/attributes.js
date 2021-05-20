@@ -1,3 +1,11 @@
+/**
+* Copyright 2012-2021, Plotly, Inc.
+* All rights reserved.
+*
+* This source code is licensed under the MIT license found in the
+* LICENSE file in the root directory of this source tree.
+*/
+
 'use strict';
 
 var hovertemplateAttrs = require('../../plots/template_attributes').hovertemplateAttrs;
@@ -123,6 +131,16 @@ module.exports = {
         },
 
         colors: sunburstAttrs.marker.colors,
+        
+        hoverframecolor: {
+            valType: 'color',
+            role: 'style',
+            dflt: null,
+            editType: 'style',
+            description: [
+                'Sets the color of the line enclosing each sector on mouse hover.'
+            ].join(' ')
+        },
 
         pattern: pattern,
 
