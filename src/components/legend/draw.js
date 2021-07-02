@@ -536,7 +536,6 @@ function drawTexts(g, gd, legendObj) {
             name = legendItem.text;
 			legendTooltip = legendItem.labelTooltip || name;
         }
-        name = legendItem.text;
     }
 
     var textEl = Lib.ensureSingle(g, 'text', legendId + 'text');
