@@ -1327,6 +1327,7 @@ plots.supplyTraceDefaults = function(traceIn, traceOut, colorIndex, layout, trac
             coerce('legendgroup');
             coerce('legendgrouptitle.text');
             coerce('legendrank');
+            coerce('legendtooltip');
 
             traceOut._dfltShowLegend = true;
         } else {

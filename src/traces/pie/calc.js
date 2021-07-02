@@ -14,6 +14,7 @@ function calc(gd, trace) {
     var hiddenLabels = fullLayout.hiddenlabels || [];
 
     var labels = trace.labels;
+    var labelTooltips = trace.labeltooltips;
     var colors = trace.marker.colors || [];
     var vals = trace.values;
     var len = trace._length;
@@ -34,7 +35,7 @@ function calc(gd, trace) {
     var isAggregated = false;
 
     for(i = 0; i < len; i++) {
-        var v, label, hidden;
+        var v, label, labelTooltip, hidden;
         if(hasValues) {
             v = vals[i];
             if(!isNumeric(v)) continue;
@@ -44,6 +45,8 @@ function calc(gd, trace) {
         label = labels[i];
         if(label === undefined || label === '') label = i;
         label = String(label);
+        
+        labelTooltip = labelTooltips && labelTooltips[i] || null;
 
         var thisLabelIndex = allThisTraceLabels[label];
         if(thisLabelIndex === undefined) {
@@ -56,6 +59,7 @@ function calc(gd, trace) {
             cd.push({
                 v: v,
                 label: label,
+                labelTooltip: labelTooltip,
                 color: pullColor(colors[i], label),
                 i: i,
                 pts: [i],

@@ -54,6 +54,15 @@ module.exports = {
             'when toggling legend items.'
         ].join(' ')
     },
+    legendtooltip: {
+        valType: 'string',
+        role: 'info',
+        dflt: '',
+        editType: 'style',
+        description: [
+            'Sets the legend tooltip to be displayed on hover'
+        ].join(' ')
+    },
     legendgrouptitle: {
         text: {
             valType: 'string',
@@ -90,7 +99,7 @@ module.exports = {
         valType: 'number',
         min: 0,
         editType: 'style',
-        description: 'Sets the width (in px or fraction) of the legend for this trace.',
+        description: 'Sets the width (in px or fraction) of the legend for this trace.'
     },
     opacity: {
         valType: 'number',
