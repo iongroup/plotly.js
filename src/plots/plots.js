@@ -1993,9 +1993,10 @@ plots.doAutoMargin = function(gd) {
                     var ft = pushMargin[k2].t.val;
                     var pt = pushMargin[k2].t.size;
 
-                    if (k2 === "legend" && pt >30) {
-                        pt = 30;
-                    }
+                    // can't fix the size as legends can move to two rows - TPUX-2389
+                    // if (k2 === "legend" && pt >30) {
+                    //     pt = 30;
+                    // }
 
                     if(ft > fb) {
                         var newB = (pb * ft + (pt - height) * fb) / (ft - fb);
