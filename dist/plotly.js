@@ -1,5 +1,5 @@
 /**
-* plotly.js v1.56.0-ion5
+* plotly.js v1.56.0-ion6
 * Copyright 2012-2021, Plotly, Inc.
 * All rights reserved.
 * Licensed under the MIT license
@@ -87837,9 +87837,14 @@ color.contrast = function(cstr, lightAmount, darkAmount) {
 
     if(tc.getAlpha() !== 1) tc = tinycolor(color.combine(cstr, background));
 
-    var newColor = tc.isDark() ?
-        (lightAmount ? tc.lighten(lightAmount) : background) :
-        (darkAmount ? tc.darken(darkAmount) : defaultLine);
+    //isDark logic updated to match with Less contrast function as tinycolor rely on brightness instead of luminance
+
+    var isDark = (tc.getLuminance() < 0.43);
+
+    // changing color to match ION specific contrast color black and white
+    var newColor = isDark ?
+        (lightAmount ? tc.lighten(lightAmount) : "#fff") :
+        (darkAmount ? tc.darken(darkAmount) : "#000");
 
     return newColor.toString();
 };
@@ -97299,13 +97304,16 @@ function drawTexts(g, gd, opts) {
     var maxNameLength = opts._maxNameLength;
 
     var name;
+    var legendTooltip;
     if(!opts.entries) {
         name = isPieLike ? legendItem.label : trace.name;
+        legendTooltip = (isPieLike ? legendItem.labelTooltip : trace.legendtooltip) || name;
         if(trace._meta) {
             name = Lib.templateString(name, trace._meta);
         }
     } else {
         name = legendItem.text;
+        legendTooltip = legendItem.labelTooltip || name;
     }
 
     var textEl = Lib.ensureSingle(g, 'text', 'legendtext');
@@ -97319,7 +97327,8 @@ function drawTexts(g, gd, opts) {
         .call(Drawing.font, opts.font)
         .text(isEditable ? ensureLength(name, maxNameLength) : legendLabel);
 
-    Lib.ensureSingle(g, 'title').text(name.replace("<br>", "\n"));
+    
+    Lib.ensureSingle(g, 'title').text(legendTooltip.replace("<br>", "\n"));
 
     svgTextUtils.positionText(textEl, constants.textGap, 0);
 
@@ -97753,10 +97762,12 @@ module.exports = function getLegendData(calcdata, opts) {
 
             for(j = 0; j < cd.length; j++) {
                 var labelj = cd[j].label;
+                var labeltooltipj = cd[j].labelTooltip;
 
                 if(!slicesShown[lgroup][labelj]) {
                     addOneItem(lgroup, {
                         label: labelj,
+                        labelTooltip: labeltooltipj,
                         color: cd[j].color,
                         i: cd[j].i,
                         trace: trace,
@@ -123642,6 +123653,13 @@ module.exports = {
         editType: 'style',
         
     },
+    legendtooltip: {
+        valType: 'string',
+        
+        dflt: '',
+        editType: 'style',
+        
+    },
     opacity: {
         valType: 'number',
         
@@ -145701,6 +145719,7 @@ plots.supplyTraceDefaults = function(traceIn, traceOut, colorIndex, layout, trac
             );
 
             coerce('legendgroup');
+            coerce('legendtooltip');
 
             traceOut._dfltShowLegend = true;
         } else {
@@ -185337,6 +185356,11 @@ module.exports = {
         editType: 'calc',
         
     },
+    labeltooltips: {
+        valType: 'data_array',
+        editType: 'calc',
+        
+    },
     // equivalent of x0 and dx, if label is missing
     label0: {
         valType: 'number',
@@ -185623,6 +185647,7 @@ function calc(gd, trace) {
     var hiddenLabels = fullLayout.hiddenlabels || [];
 
     var labels = trace.labels;
+    var labelTooltips = trace.labeltooltips;
     var colors = trace.marker.colors || [];
     var vals = trace.values;
     var len = trace._length;
@@ -185643,7 +185668,7 @@ function calc(gd, trace) {
     var isAggregated = false;
 
     for(i = 0; i < len; i++) {
-        var v, label, hidden;
+        var v, label, labelTooltip, hidden;
         if(hasValues) {
             v = vals[i];
             if(!isNumeric(v)) continue;
@@ -185654,6 +185679,8 @@ function calc(gd, trace) {
         label = labels[i];
         if(label === undefined || label === '') label = i;
         label = String(label);
+        
+        labelTooltip = labelTooltips && labelTooltips[i] || null;
 
         var thisLabelIndex = allThisTraceLabels[label];
         if(thisLabelIndex === undefined) {
@@ -185666,6 +185693,7 @@ function calc(gd, trace) {
             cd.push({
                 v: v,
                 label: label,
+                labelTooltip: labelTooltip,
                 color: pullColor(colors[i], label),
                 i: i,
                 pts: [i],
@@ -185846,6 +185874,7 @@ function supplyDefaults(traceIn, traceOut, defaultColor, layout) {
         coerce('label0');
         coerce('dlabel');
     }
+    coerce('labeltooltips');
 
     if(!len) {
         traceOut.visible = false;
@@ -187229,6 +187258,7 @@ function formatSliceLabel(gd, pt, cd0) {
         return {
             label: pt.label,
             value: pt.v,
+            labeltooltip: pt.labeltooltip,
             valueLabel: helpers.formatPieValue(pt.v, fullLayout.separators),
             percent: pt.v / cd0.vTotal,
             percentLabel: helpers.formatPiePercent(pt.v / cd0.vTotal, fullLayout.separators),
@@ -211172,7 +211202,7 @@ function getSortFunc(opts, d2c) {
 'use strict';
 
 // package version injected by `npm run preprocess`
-exports.version = '1.56.0-ion5';
+exports.version = '1.56.0-ion6';
 
 },{}]},{},[26])(26)
 });

@@ -221,6 +221,13 @@
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
                 },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
+                },
                 "opacity": {
                     "valType": "number",
                     "role": "style",
@@ -2589,6 +2596,13 @@
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
                 },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
+                },
                 "opacity": {
                     "valType": "number",
                     "role": "style",
@@ -4446,6 +4460,13 @@
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
                 },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
+                },
                 "opacity": {
                     "valType": "number",
                     "role": "style",
@@ -5804,6 +5825,13 @@
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
                 },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
+                },
                 "opacity": {
                     "valType": "number",
                     "role": "style",
@@ -6991,6 +7019,13 @@
                     "dflt": "",
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
+                },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
                 },
                 "opacity": {
                     "valType": "number",
@@ -8621,6 +8656,13 @@
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
                 },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
+                },
                 "opacity": {
                     "valType": "number",
                     "role": "style",
@@ -9768,6 +9810,13 @@
                     "dflt": "",
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
+                },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
                 },
                 "opacity": {
                     "valType": "number",
@@ -11074,6 +11123,13 @@
                     "dflt": "",
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
+                },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
                 },
                 "opacity": {
                     "valType": "number",
@@ -12418,6 +12474,13 @@
                     "dflt": "",
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
+                },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
                 },
                 "opacity": {
                     "valType": "number",
@@ -14352,6 +14415,13 @@
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
                 },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
+                },
                 "opacity": {
                     "valType": "number",
                     "role": "style",
@@ -15599,6 +15669,13 @@
                     "dflt": "",
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
+                },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
                 },
                 "opacity": {
                     "valType": "number",
@@ -17101,6 +17178,13 @@
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
                 },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
+                },
                 "opacity": {
                     "valType": "number",
                     "role": "style",
@@ -18015,6 +18099,13 @@
                     "editType": "calc",
                     "description": "Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible)."
                 },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
+                },
                 "opacity": {
                     "valType": "number",
                     "role": "style",
@@ -18436,6 +18527,13 @@
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
                 },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
+                },
                 "opacity": {
                     "valType": "number",
                     "role": "style",
@@ -18626,6 +18724,12 @@
                     "valType": "data_array",
                     "editType": "calc",
                     "description": "Sets the sector labels. If `labels` entries are duplicated, we sum associated `values` or simply count occurrences if `values` is not provided. For other array attributes (including color) we use the first non-empty entry among all occurrences of the label.",
+                    "role": "data"
+                },
+                "labeltooltips": {
+                    "valType": "data_array",
+                    "editType": "calc",
+                    "description": "Sets the legend tooltips.",
                     "role": "data"
                 },
                 "label0": {
@@ -19197,6 +19301,12 @@
                     "description": "Sets the source reference on Chart Studio Cloud for  labels .",
                     "editType": "none"
                 },
+                "labeltooltipssrc": {
+                    "valType": "string",
+                    "role": "info",
+                    "description": "Sets the source reference on Chart Studio Cloud for  labeltooltips .",
+                    "editType": "none"
+                },
                 "valuessrc": {
                     "valType": "string",
                     "role": "info",
@@ -19294,6 +19404,13 @@
                     "dflt": true,
                     "editType": "calc",
                     "description": "Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible)."
+                },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
                 },
                 "opacity": {
                     "valType": "number",
@@ -20573,6 +20690,13 @@
                     "dflt": true,
                     "editType": "calc",
                     "description": "Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible)."
+                },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
                 },
                 "opacity": {
                     "valType": "number",
@@ -22048,6 +22172,13 @@
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
                 },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
+                },
                 "opacity": {
                     "valType": "number",
                     "role": "style",
@@ -22771,6 +22902,13 @@
                     "dflt": "",
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
+                },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
                 },
                 "opacity": {
                     "valType": "number",
@@ -25129,6 +25267,13 @@
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
                 },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
+                },
                 "name": {
                     "valType": "string",
                     "role": "info",
@@ -26569,6 +26714,13 @@
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
                 },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
+                },
                 "name": {
                     "valType": "string",
                     "role": "info",
@@ -27881,6 +28033,13 @@
                     "dflt": "",
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
+                },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
                 },
                 "name": {
                     "valType": "string",
@@ -29201,6 +29360,13 @@
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
                 },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
+                },
                 "name": {
                     "valType": "string",
                     "role": "info",
@@ -30439,6 +30605,13 @@
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
                 },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
+                },
                 "name": {
                     "valType": "string",
                     "role": "info",
@@ -31530,6 +31703,13 @@
                     "dflt": "",
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
+                },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
                 },
                 "name": {
                     "valType": "string",
@@ -32644,6 +32824,13 @@
                     "dflt": "",
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
+                },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
                 },
                 "opacity": {
                     "valType": "number",
@@ -34538,6 +34725,13 @@
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
                 },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
+                },
                 "name": {
                     "valType": "string",
                     "role": "info",
@@ -35578,6 +35772,13 @@
                     "dflt": "",
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
+                },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
                 },
                 "name": {
                     "valType": "string",
@@ -37787,6 +37988,13 @@
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
                 },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
+                },
                 "name": {
                     "valType": "string",
                     "role": "info",
@@ -39523,6 +39731,13 @@
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
                 },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
+                },
                 "opacity": {
                     "valType": "number",
                     "role": "style",
@@ -39934,6 +40149,13 @@
                     "dflt": true,
                     "editType": "calc",
                     "description": "Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible)."
+                },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
                 },
                 "opacity": {
                     "valType": "number",
@@ -40916,6 +41138,13 @@
                     "dflt": true,
                     "editType": "calc",
                     "description": "Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible)."
+                },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
                 },
                 "name": {
                     "valType": "string",
@@ -41969,6 +42198,13 @@
                     "editType": "calc",
                     "description": "Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible)."
                 },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
+                },
                 "name": {
                     "valType": "string",
                     "role": "info",
@@ -42963,6 +43199,13 @@
                     "dflt": "",
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
+                },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
                 },
                 "opacity": {
                     "valType": "number",
@@ -44173,6 +44416,13 @@
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
                 },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
+                },
                 "name": {
                     "valType": "string",
                     "role": "info",
@@ -45196,6 +45446,13 @@
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
                 },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
+                },
                 "opacity": {
                     "valType": "number",
                     "role": "style",
@@ -46142,6 +46399,13 @@
                     "editType": "calc",
                     "description": "Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible)."
                 },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
+                },
                 "name": {
                     "valType": "string",
                     "role": "info",
@@ -47087,6 +47351,13 @@
                     "editType": "calc",
                     "description": "Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible)."
                 },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
+                },
                 "name": {
                     "valType": "string",
                     "role": "info",
@@ -47978,6 +48249,13 @@
                     "editType": "calc",
                     "description": "Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible)."
                 },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
+                },
                 "name": {
                     "valType": "string",
                     "role": "info",
@@ -48669,6 +48947,13 @@
                     "dflt": true,
                     "editType": "calc",
                     "description": "Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible)."
+                },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
                 },
                 "opacity": {
                     "valType": "number",
@@ -50090,6 +50375,13 @@
                     "dflt": "",
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
+                },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
                 },
                 "opacity": {
                     "valType": "number",
@@ -52012,6 +52304,13 @@
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
                 },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
+                },
                 "opacity": {
                     "valType": "number",
                     "role": "style",
@@ -53068,6 +53367,13 @@
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
                 },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
+                },
                 "opacity": {
                     "valType": "number",
                     "role": "style",
@@ -53618,6 +53924,13 @@
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
                 },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
+                },
                 "opacity": {
                     "valType": "number",
                     "role": "style",
@@ -54165,6 +54478,13 @@
                     "dflt": "",
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
+                },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
                 },
                 "opacity": {
                     "valType": "number",
@@ -56115,6 +56435,13 @@
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
                 },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
+                },
                 "opacity": {
                     "valType": "number",
                     "role": "style",
@@ -57997,6 +58324,13 @@
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
                 },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
+                },
                 "opacity": {
                     "valType": "number",
                     "role": "style",
@@ -59219,6 +59553,13 @@
                     "dflt": "",
                     "editType": "style",
                     "description": "Sets the legend group for this trace. Traces part of the same legend group hide/show at the same time when toggling legend items."
+                },
+                "legendtooltip": {
+                    "valType": "string",
+                    "role": "info",
+                    "dflt": "",
+                    "editType": "style",
+                    "description": "Sets the legend tooltip to be displayed on hover"
                 },
                 "opacity": {
                     "valType": "number",
