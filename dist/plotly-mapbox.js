@@ -1,5 +1,5 @@
 /**
-* plotly.js (mapbox) v1.56.0-ion6
+* plotly.js (mapbox) v1.56.0-ion7
 * Copyright 2012-2021, Plotly, Inc.
 * All rights reserved.
 * Licensed under the MIT license
@@ -7584,7 +7584,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
         if (j === m) j = 0;
         point = ring[j];
         var λ = point[0], φ = point[1] / 2 + π / 4, sinφ = Math.sin(φ), cosφ = Math.cos(φ), dλ = λ - λ0, sdλ = dλ >= 0 ? 1 : -1, adλ = sdλ * dλ, antimeridian = adλ > π, k = sinφ0 * sinφ;
-        d3_geo_areaRingSum.add(Math.atan2(k * sdλ * Math.sin(adλ), cosφ0 * cosφ + k * Math.cos(adλ)));
+        d3_geo_areaRingSum.add(Math.atan2(k * sdλ * Math.sin(adλ), cosφ0 * cos�� + k * Math.cos(adλ)));
         polarAngle += antimeridian ? dλ + sdλ * τ : dλ;
         if (antimeridian ^ λ0 >= meridian ^ λ >= meridian) {
           var arc = d3_geo_cartesianCross(d3_geo_cartesian(point0), d3_geo_cartesian(point));
@@ -46559,7 +46559,7 @@ var entityToUnicode = {
     nbsp: ' ',
     times: '×',
     plusmn: '±',
-    deg: '��'
+    deg: '°'
 };
 
 // NOTE: in general entities can contain uppercase too (so [a-zA-Z]) but all the
@@ -59524,7 +59524,7 @@ function drawTitle(gd, ax) {
         x = ax._offset + ax._length / 2;
         y = (ax.side === 'top') ? pos - titleStandoff : pos + titleStandoff;
     } else {
-        y = ax._offset + ax._length / 2;
+        y = ax._length / 2;
         x = (ax.side === 'right') ? pos + titleStandoff : pos - titleStandoff;
         transform = {rotate: '-90', offset: 0};
     }
@@ -82675,7 +82675,7 @@ module.exports = function selectPoints(searchInfo, selectionTester) {
 'use strict';
 
 // package version injected by `npm run preprocess`
-exports.version = '1.56.0-ion6';
+exports.version = '1.56.0-ion7';
 
 },{}]},{},[5])(5)
 });
