@@ -46,7 +46,7 @@ try {
 }
 
 var partialBundleNames = [
-    'basic', 'cartesian', 'geo', 'gl3d', 'gl2d', 'mapbox', 'finance', 'strict'
+    'basic', 'cartesian', 'geo', /*'gl3d', 'gl2d',*/ 'mapbox', 'finance'
 ];
 
 var partialBundleTraces = {

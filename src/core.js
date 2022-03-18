@@ -32,7 +32,7 @@ register(require('./traces/scatter'));
 // register all registrable components modules
 register([
     require('./components/annotations'),
-    require('./components/annotations3d'),
+    //require('./components/annotations3d'),
     require('./components/selections'),
     require('./components/shapes'),
     require('./components/images'),
