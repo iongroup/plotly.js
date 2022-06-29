@@ -273,12 +273,12 @@ function registerTraceModule(_module) {
     var bpmName = basePlotModule.name;
 
     // add mapbox-gl CSS here to avoid console warning on instantiation
-    if(bpmName === 'mapbox') {
-        var styleRules = basePlotModule.constants.styleRules;
-        for(var k in styleRules) {
-            addStyleRule('.js-plotly-plot .plotly .mapboxgl-' + k, styleRules[k]);
-        }
-    }
+    // if(bpmName === 'mapbox') {
+    //     var styleRules = basePlotModule.constants.styleRules;
+    //     for(var k in styleRules) {
+    //         addStyleRule('.js-plotly-plot .plotly .mapboxgl-' + k, styleRules[k]);
+    //     }
+    // }
 
     // if `plotly-geo-assets.js` is not included,
     // add `PlotlyGeoAssets` global to stash references to all fetched
