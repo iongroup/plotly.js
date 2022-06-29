@@ -1,6 +1,6 @@
 var fs = require('fs-extra');
 var sass = require('node-sass');
-
+var process = require('process');
 var constants = require('./util/constants');
 var common = require('./util/common');
 var pullCSS = require('./util/pull_css');
@@ -19,8 +19,17 @@ function makeBuildCSS() {
     }, function(err, result) {
         if(err) throw err;
 
-        // css to js
-        pullCSS(String(result.css), constants.pathToCSSBuild);
+        var cspNoInlineStyle = process.env.npm_config_cspNoInlineStyle;
+        var pathToCSS = process.env.npm_config_pathToCSS || 'plot-csp.css';
+        if(cspNoInlineStyle) {
+            // if csp no inline style then build css file to include at path relative to dist folder
+            fs.writeFile(constants.pathToDist + pathToCSS, String(result.css), function(err) {
+                if(err) throw err;
+            });
+        } else {
+            // css to js
+            pullCSS(String(result.css), constants.pathToCSSBuild);
+        }
     });
 }
 
