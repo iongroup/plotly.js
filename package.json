@@ -21,7 +21,7 @@
     "plotly"
   ],
   "scripts": {
-    "preprocess": "node tasks/preprocess.js",
+    "preprocess": "node tasks/preprocess.js %npm_config_cspNoInlineStyle% %npm_config_pathToCSS%",
     "bundle": "node tasks/bundle.js",
     "header": "node tasks/header.js",
     "stats": "node tasks/stats.js",
