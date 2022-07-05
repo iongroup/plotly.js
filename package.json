@@ -1,6 +1,6 @@
 {
   "name": "@ionweb/plotly.js",
-  "version": "1.56.0-ion8",
+  "version": "1.56.0-ion9",
   "description": "The open source javascript graphing library that powers plotly",
   "license": "MIT",
   "main": "./lib/index.js",
@@ -21,7 +21,7 @@
     "plotly"
   ],
   "scripts": {
-    "preprocess": "node tasks/preprocess.js",
+    "preprocess": "node tasks/preprocess.js --cspNoInlineStyle",
     "bundle": "node tasks/bundle.js",
     "header": "node tasks/header.js",
     "stats": "node tasks/stats.js",
