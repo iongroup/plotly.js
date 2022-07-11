@@ -83,6 +83,15 @@ function addRelatedStyleRule(uid, selector, styleString) {
 }
 
 /**
+ * to set style directly on elements in CSP Strict style compatible way
+ */
+function setStyleOnElements(selector, style) {
+    var styleRule = style.split(':');
+    document.querySelectorAll(selector).forEach(function(el) { el.style[styleRule[0]] = styleRule[1]; });
+}
+
+
+/**
  * to remove from the page a stylesheet identified by a given uid
  */
 function deleteRelatedStyleRule(uid) {
@@ -97,5 +106,6 @@ module.exports = {
     removeElement: removeElement,
     addStyleRule: addStyleRule,
     addRelatedStyleRule: addRelatedStyleRule,
-    deleteRelatedStyleRule: deleteRelatedStyleRule
+    deleteRelatedStyleRule: deleteRelatedStyleRule,
+    setStyleOnElements: setStyleOnElements
 };

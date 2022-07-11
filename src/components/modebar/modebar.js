@@ -16,6 +16,8 @@ var Lib = require('../../lib');
 var Icons = require('../../fonts/ploticon');
 var Parser = new DOMParser();
 
+var cspNoInlineStyle = require('./../../lib').cspNoInlineStyle;
+
 /**
  * UI controller for interactive plots
  * @Class
@@ -63,11 +65,18 @@ proto.update = function(graphInfo, buttons) {
     var style = fullLayout.modebar;
     var bgSelector = context.displayModeBar === 'hover' ? '.js-plotly-plot .plotly:hover ' : '';
 
-    Lib.deleteRelatedStyleRule(modeBarId);
-    Lib.addRelatedStyleRule(modeBarId, bgSelector + '#' + modeBarId + ' .modebar-group', 'background-color: ' + style.bgcolor);
-    Lib.addRelatedStyleRule(modeBarId, '#' + modeBarId + ' .modebar-btn .icon path', 'fill: ' + style.color);
-    Lib.addRelatedStyleRule(modeBarId, '#' + modeBarId + ' .modebar-btn:hover .icon path', 'fill: ' + style.activecolor);
-    Lib.addRelatedStyleRule(modeBarId, '#' + modeBarId + ' .modebar-btn.active .icon path', 'fill: ' + style.activecolor);
+    if(cspNoInlineStyle) {
+        Lib.setStyleOnElements(bgSelector + '#' + modeBarId + ' .modebar-group', 'background-color: ' + style.bgcolor);
+        Lib.setStyleOnElements('#' + modeBarId + ' .modebar-btn .icon path', 'fill: ' + style.color);
+        Lib.setStyleOnElements('#' + modeBarId + ' .modebar-btn:hover .icon path', 'fill: ' + style.activecolor);
+        Lib.setStyleOnElements('#' + modeBarId + ' .modebar-btn.active .icon path', 'fill: ' + style.activecolor);
+    } else {
+        Lib.deleteRelatedStyleRule(modeBarId);
+        Lib.addRelatedStyleRule(modeBarId, bgSelector + '#' + modeBarId + ' .modebar-group', 'background-color: ' + style.bgcolor);
+        Lib.addRelatedStyleRule(modeBarId, '#' + modeBarId + ' .modebar-btn .icon path', 'fill: ' + style.color);
+        Lib.addRelatedStyleRule(modeBarId, '#' + modeBarId + ' .modebar-btn:hover .icon path', 'fill: ' + style.activecolor);
+        Lib.addRelatedStyleRule(modeBarId, '#' + modeBarId + ' .modebar-btn.active .icon path', 'fill: ' + style.activecolor);
+    }
 
     // if buttons or logo have changed, redraw modebar interior
     var needsNewButtons = !this.hasButtons(buttons);

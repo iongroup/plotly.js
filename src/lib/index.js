@@ -18,6 +18,8 @@ var BADNUM = numConstants.BADNUM;
 
 var lib = module.exports = {};
 
+lib.cspNoInlineStyle = false;
+
 lib.nestedProperty = require('./nested_property');
 lib.keyedContainer = require('./keyed_container');
 lib.relativeAttr = require('./relative_attr');
@@ -144,6 +146,7 @@ lib.isPlotDiv = domModule.isPlotDiv;
 lib.removeElement = domModule.removeElement;
 lib.addStyleRule = domModule.addStyleRule;
 lib.addRelatedStyleRule = domModule.addRelatedStyleRule;
+lib.setStyleOnElements = domModule.setStyleOnElements;
 lib.deleteRelatedStyleRule = domModule.deleteRelatedStyleRule;
 
 lib.clearResponsive = require('./clear_responsive');
