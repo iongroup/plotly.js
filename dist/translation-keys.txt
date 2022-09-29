@@ -24,7 +24,7 @@ IE only supports svg.  Changing format to svg.         // components/modebar/but
 Lasso Select                                           // components/modebar/buttons.js:130
 Orbital rotation                                       // components/modebar/buttons.js:338
 Pan                                                    // components/modebar/buttons.js:112
-Produced with Plotly                                   // components/modebar/modebar.js:304
+Produced with Plotly                                   // components/modebar/modebar.js:305
 Reset                                                  // components/modebar/buttons.js:505
 Reset axes                                             // components/modebar/buttons.js:218
 Reset camera to default                                // components/modebar/buttons.js:376

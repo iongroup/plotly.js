@@ -1,72 +1,6 @@
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.Plotly = f()}})(function(){var define,module,exports;return (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(_dereq_,module,exports){
-'use strict';
 
-var Lib = _dereq_('../src/lib');
-var rules = {
-    "X,X div": "direction:ltr;font-family:'Open Sans', verdana, arial, sans-serif;margin:0;padding:0;",
-    "X input,X button": "font-family:'Open Sans', verdana, arial, sans-serif;",
-    "X input:focus,X button:focus": "outline:none;",
-    "X a": "text-decoration:none;",
-    "X a:hover": "text-decoration:none;",
-    "X .crisp": "shape-rendering:crispEdges;",
-    "X .user-select-none": "-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none;",
-    "X svg": "overflow:hidden;",
-    "X svg a": "fill:#447adb;",
-    "X svg a:hover": "fill:#3c6dc5;",
-    "X .main-svg": "position:absolute;top:0;left:0;pointer-events:none;",
-    "X .main-svg .draglayer": "pointer-events:all;",
-    "X .cursor-default": "cursor:default;",
-    "X .cursor-pointer": "cursor:pointer;",
-    "X .cursor-crosshair": "cursor:crosshair;",
-    "X .cursor-move": "cursor:move;",
-    "X .cursor-col-resize": "cursor:col-resize;",
-    "X .cursor-row-resize": "cursor:row-resize;",
-    "X .cursor-ns-resize": "cursor:ns-resize;",
-    "X .cursor-ew-resize": "cursor:ew-resize;",
-    "X .cursor-sw-resize": "cursor:sw-resize;",
-    "X .cursor-s-resize": "cursor:s-resize;",
-    "X .cursor-se-resize": "cursor:se-resize;",
-    "X .cursor-w-resize": "cursor:w-resize;",
-    "X .cursor-e-resize": "cursor:e-resize;",
-    "X .cursor-nw-resize": "cursor:nw-resize;",
-    "X .cursor-n-resize": "cursor:n-resize;",
-    "X .cursor-ne-resize": "cursor:ne-resize;",
-    "X .cursor-grab": "cursor:-webkit-grab;cursor:grab;",
-    "X .modebar": "position:absolute;top:2px;right:2px;",
-    "X .ease-bg": "-webkit-transition:background-color 0.3s ease 0s;-moz-transition:background-color 0.3s ease 0s;-ms-transition:background-color 0.3s ease 0s;-o-transition:background-color 0.3s ease 0s;transition:background-color 0.3s ease 0s;",
-    "X .modebar--hover>:not(.watermark)": "opacity:0;-webkit-transition:opacity 0.3s ease 0s;-moz-transition:opacity 0.3s ease 0s;-ms-transition:opacity 0.3s ease 0s;-o-transition:opacity 0.3s ease 0s;transition:opacity 0.3s ease 0s;",
-    "X:hover .modebar--hover .modebar-group": "opacity:1;",
-    "X .modebar-group": "float:left;display:inline-block;box-sizing:border-box;padding-left:8px;position:relative;vertical-align:middle;white-space:nowrap;",
-    "X .modebar-btn": "position:relative;font-size:16px;padding:3px 4px;height:22px;cursor:pointer;line-height:normal;box-sizing:border-box;",
-    "X .modebar-btn svg": "position:relative;top:2px;",
-    "X .modebar.vertical": "display:flex;flex-direction:column;flex-wrap:wrap;align-content:flex-end;max-height:100%;",
-    "X .modebar.vertical svg": "top:-1px;",
-    "X .modebar.vertical .modebar-group": "display:block;float:none;padding-left:0px;padding-bottom:8px;",
-    "X .modebar.vertical .modebar-group .modebar-btn": "display:block;text-align:center;",
-    "X [data-title]:before,X [data-title]:after": "position:absolute;-webkit-transform:translate3d(0, 0, 0);-moz-transform:translate3d(0, 0, 0);-ms-transform:translate3d(0, 0, 0);-o-transform:translate3d(0, 0, 0);transform:translate3d(0, 0, 0);display:none;opacity:0;z-index:1001;pointer-events:none;top:110%;right:50%;",
-    "X [data-title]:hover:before,X [data-title]:hover:after": "display:block;opacity:1;",
-    "X [data-title]:before": "content:'';position:absolute;background:transparent;border:6px solid transparent;z-index:1002;margin-top:-12px;border-bottom-color:#69738a;margin-right:-6px;",
-    "X [data-title]:after": "content:attr(data-title);background:#69738a;color:white;padding:8px 10px;font-size:12px;line-height:12px;white-space:nowrap;margin-right:-18px;border-radius:2px;",
-    "X .vertical [data-title]:before,X .vertical [data-title]:after": "top:0%;right:200%;",
-    "X .vertical [data-title]:before": "border:6px solid transparent;border-left-color:#69738a;margin-top:8px;margin-right:-30px;",
-    "X .select-outline": "fill:none;stroke-width:1;shape-rendering:crispEdges;",
-    "X .select-outline-1": "stroke:white;",
-    "X .select-outline-2": "stroke:black;stroke-dasharray:2px 2px;",
-    Y: "font-family:'Open Sans', verdana, arial, sans-serif;position:fixed;top:50px;right:20px;z-index:10000;font-size:10pt;max-width:180px;",
-    "Y p": "margin:0;",
-    "Y .notifier-note": "min-width:180px;max-width:250px;border:1px solid #fff;z-index:3000;margin:0;background-color:#8c97af;background-color:rgba(140,151,175,0.9);color:#fff;padding:10px;overflow-wrap:break-word;word-wrap:break-word;-ms-hyphens:auto;-webkit-hyphens:auto;hyphens:auto;",
-    "Y .notifier-close": "color:#fff;opacity:0.8;float:right;padding:0 5px;background:none;border:none;font-size:20px;font-weight:bold;line-height:20px;",
-    "Y .notifier-close:hover": "color:#444;text-decoration:none;cursor:pointer;"
-};
-
-for(var selector in rules) {
-    var fullSelector = selector.replace(/^,/,' ,')
-        .replace(/X/g, '.js-plotly-plot .plotly')
-        .replace(/Y/g, '.plotly-notifier');
-    Lib.addStyleRule(fullSelector, rules[selector]);
-}
-
-},{"../src/lib":197}],2:[function(_dereq_,module,exports){
+},{}],2:[function(_dereq_,module,exports){
 /**
 * Copyright 2012-2021, Plotly, Inc.
 * All rights reserved.
@@ -406,8 +340,8 @@ function fromByteArray (uint8) {
 }
 
 },{}],16:[function(_dereq_,module,exports){
-
-},{}],17:[function(_dereq_,module,exports){
+arguments[4][1][0].apply(exports,arguments)
+},{"dup":1}],17:[function(_dereq_,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -30135,6 +30069,7 @@ var Drawing = _dereq_('../drawing');
 var Color = _dereq_('../color');
 var svgTextUtils = _dereq_('../../lib/svg_text_utils');
 var handleClick = _dereq_('./handle_click');
+var xmlnsNamespaces = _dereq_('../../constants/xmlns_namespaces');
 
 var constants = _dereq_('./constants');
 var alignmentConstants = _dereq_('../../constants/alignment');
@@ -30185,6 +30120,27 @@ module.exports = function draw(gd, opts) {
     var legend = Lib.ensureSingle(layer, 'g', 'legend', function(s) {
         if(opts._main) s.attr('pointer-events', 'all');
     });
+
+    var legendPopupAnchor = Lib.ensureSingle(layer, 'g', 'legend-popup-anchor', function(s) {
+        s.attr('pointer-events', 'all');
+    });
+    legendPopupAnchor[0][0].innerHTML = `<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="${fullLayout.width - 15}" y="2" height="12" width="12" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+    
+    <path id="info-2-icon" d="M255.998,90.001c91.74,0,166.002,74.241,166.002,165.998c0,91.741-74.245,166-166.002,166
+    
+        c-91.74,0-165.998-74.243-165.998-166C90,164.259,164.243,90.001,255.998,90.001 M255.998,50.001
+    
+        C142.229,50.001,50,142.229,50,255.999c0,113.771,92.229,206,205.998,206c113.771,0,206.002-92.229,206.002-206
+    
+        C462,142.229,369.77,50.001,255.998,50.001L255.998,50.001z M285.822,367.567h-57.646V230.6h57.646V367.567z M257,202.268
+    
+        c-17.522,0-31.729-14.206-31.729-31.73c0-17.522,14.206-31.729,31.729-31.729c17.524,0,31.728,14.206,31.728,31.729
+    
+        C288.728,188.062,274.524,202.268,257,202.268z"/>
+    
+    </svg>`;
 
     var clipPath = Lib.ensureSingleById(fullLayout._topdefs, 'clipPath', clipId, function(s) {
         s.append('rect');
@@ -30256,21 +30212,46 @@ module.exports = function draw(gd, opts) {
             if(opts._main && fullLayout.margin.autoexpand) {
                 var lx0 = lx;
                 var ly0 = ly;
+                var hideLegendInPopup;
 
                 lx = Lib.constrain(lx, 0, fullLayout.width - opts._width);
                 ly = Lib.constrain(ly, 0, fullLayout.height - opts._effHeight);
 
                 if(lx !== lx0) {
                     Lib.log('Constrain legend.x to make legend fit inside graph');
+                    hideLegendInPopup = true;
                 }
                 if(ly !== ly0) {
                     Lib.log('Constrain legend.y to make legend fit inside graph');
+                    hideLegendInPopup = true;
                 }
             }
 
             // Set size and position of all the elements that make up a legend:
             // legend, background and border, scroll box and scroll bar as well as title
-            if(opts._main) Drawing.setTranslate(legend, lx, ly);
+            if(opts._main && !hideLegendInPopup) {
+                legend.style('display', 'block');
+                legend.classed('show-in-popup', false);
+                legendPopupAnchor.style('display', 'none');
+                Drawing.setTranslate(legend, lx, ly);   
+            }
+            if(opts._main && hideLegendInPopup) {
+                legend.style('display', 'none');
+                legend.classed('show-in-popup', false);
+                legendPopupAnchor.style('display', 'block');
+                legendPopupAnchor.on('click', toggleLegendPopup.bind(this));
+                const legendPopupAnchorHeight = Drawing.bBox(legendPopupAnchor.node()).height;
+                // translate the legend relative to the popupAnchor
+                Drawing.setTranslate(legend, fullLayout.width - opts._width, legendPopupAnchorHeight);
+            }
+
+            function toggleLegendPopup() {
+                if (legend.classed('show-in-popup') && legend.style('display') !== 'none') {
+                    legend.classed('show-in-popup', false).style('display', 'none');
+                } else {
+                    legend.classed('show-in-popup', true).style('display', 'block');
+                }
+            }
 
             // to be safe, remove previous listeners
             scrollBar.on('.drag', null);
@@ -30916,7 +30897,7 @@ function getYanchor(opts) {
         'top';
 }
 
-},{"../../constants/alignment":172,"../../lib":197,"../../lib/events":190,"../../lib/svg_text_utils":218,"../../plots/plots":275,"../../registry":288,"../color":70,"../dragelement":89,"../drawing":92,"./constants":121,"./get_legend_data":124,"./handle_click":125,"./helpers":126,"./style":128,"d3":21}],124:[function(_dereq_,module,exports){
+},{"../../constants/alignment":172,"../../constants/xmlns_namespaces":177,"../../lib":197,"../../lib/events":190,"../../lib/svg_text_utils":218,"../../plots/plots":275,"../../registry":288,"../color":70,"../dragelement":89,"../drawing":92,"./constants":121,"./get_legend_data":124,"./handle_click":125,"./helpers":126,"./style":128,"d3":21}],124:[function(_dereq_,module,exports){
 /**
 * Copyright 2012-2021, Plotly, Inc.
 * All rights reserved.
@@ -33100,14 +33081,15 @@ proto.update = function(graphInfo, buttons) {
         buttons = buttons.reverse();
     }
 
-    var style = fullLayout.modebar;
-    var bgSelector = context.displayModeBar === 'hover' ? '.js-plotly-plot .plotly:hover ' : '';
+    //  var style = fullLayout.modebar;
+    //  var bgSelector = context.displayModeBar === 'hover' ? '.js-plotly-plot .plotly:hover ' : '';
 
     Lib.deleteRelatedStyleRule(modeBarId);
-    Lib.addRelatedStyleRule(modeBarId, bgSelector + '#' + modeBarId + ' .modebar-group', 'background-color: ' + style.bgcolor);
-    Lib.addRelatedStyleRule(modeBarId, '#' + modeBarId + ' .modebar-btn .icon path', 'fill: ' + style.color);
-    Lib.addRelatedStyleRule(modeBarId, '#' + modeBarId + ' .modebar-btn:hover .icon path', 'fill: ' + style.activecolor);
-    Lib.addRelatedStyleRule(modeBarId, '#' + modeBarId + ' .modebar-btn.active .icon path', 'fill: ' + style.activecolor);
+
+    // Lib.addRelatedStyleRule(modeBarId, bgSelector + '#' + modeBarId + ' .modebar-group', 'background-color: ' + style.bgcolor);
+    // Lib.addRelatedStyleRule(modeBarId, '#' + modeBarId + ' .modebar-btn .icon path', 'fill: ' + style.color);
+    // Lib.addRelatedStyleRule(modeBarId, '#' + modeBarId + ' .modebar-btn:hover .icon path', 'fill: ' + style.activecolor);
+    // Lib.addRelatedStyleRule(modeBarId, '#' + modeBarId + ' .modebar-btn.active .icon path', 'fill: ' + style.activecolor);
 
     // if buttons or logo have changed, redraw modebar interior
     var needsNewButtons = !this.hasButtons(buttons);
@@ -75117,12 +75099,12 @@ function registerTraceModule(_module) {
     var bpmName = basePlotModule.name;
 
     // add mapbox-gl CSS here to avoid console warning on instantiation
-    if(bpmName === 'mapbox') {
-        var styleRules = basePlotModule.constants.styleRules;
-        for(var k in styleRules) {
-            addStyleRule('.js-plotly-plot .plotly .mapboxgl-' + k, styleRules[k]);
-        }
-    }
+    // if(bpmName === 'mapbox') {
+    //     var styleRules = basePlotModule.constants.styleRules;
+    //     for(var k in styleRules) {
+    //         addStyleRule('.js-plotly-plot .plotly .mapboxgl-' + k, styleRules[k]);
+    //     }
+    // }
 
     // if `plotly-geo-assets.js` is not included,
     // add `PlotlyGeoAssets` global to stash references to all fetched
@@ -95016,7 +94998,7 @@ module.exports = function style(gd) {
 'use strict';
 
 // package version injected by `npm run preprocess`
-exports.version = '1.56.0-ion8';
+exports.version = '1.56.0-ion9';
 
 },{}]},{},[11])(11)
 });
