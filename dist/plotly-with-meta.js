@@ -49122,11 +49122,15 @@ module.exports = function draw(gd, opts) {
     });
 
     var legendPopupAnchor = Lib.ensureSingle(layer, 'g', 'legend-popup-anchor', function(s) {
-        s.attr('pointer-events', 'all');
+        s.attr('pointer-events', 'all').attr('title', 'Show Legend');
         var anchorIcon = Lib.ensureSingle(s, 'path');
         anchorIcon.attr('d', 'M255.998,90.001c91.74,0,166.002,74.241,166.002,165.998c0,91.741-74.245,166-166.002,166c-91.74,0-165.998-74.243-165.998-166C90,164.259,164.243,90.001,255.998,90.001 M255.998,50.001C142.229,50.001,50,142.229,50,255.999c0,113.771,92.229,206,205.998,206c113.771,0,206.002-92.229,206.002-206C462,142.229,369.77,50.001,255.998,50.001L255.998,50.001z M285.822,367.567h-57.646V230.6h57.646V367.567z M257,202.268c-17.522,0-31.729-14.206-31.729-31.73c0-17.522,14.206-31.729,31.729-31.729c17.524,0,31.728,14.206,31.728,31.729C288.728,188.062,274.524,202.268,257,202.268z');
     });
     legendPopupAnchor.attr("transform", `scale(0.03, 0.03) translate(${(fullLayout.width - 15) * 32}, -50)`);
+    var anchorIconBg = Lib.ensureSingle(legendPopupAnchor, 'rect');
+    const legendPopupAnchorBox = Drawing.bBox(legendPopupAnchor.node());
+    const [legendPopupAnchorHeight, legendPopupAnchorWidth] = [legendPopupAnchorBox.height, legendPopupAnchorBox.width];
+    anchorIconBg.attr('x', 0).attr('y', '0').attr('height', legendPopupAnchorHeight).attr('width', legendPopupAnchorWidth).style('fill', 'none').style('fill-opacity', '1');
 
 
     var clipPath = Lib.ensureSingleById(fullLayout._topdefs, 'clipPath', clipId, function(s) {
@@ -49227,7 +49231,6 @@ module.exports = function draw(gd, opts) {
                 legend.classed('show-in-popup', false);
                 legendPopupAnchor.style('display', 'block');
                 legendPopupAnchor.on('click', toggleLegendPopup.bind(this));
-                const legendPopupAnchorHeight = Drawing.bBox(legendPopupAnchor.node()).height;
                 // translate the legend relative to the popupAnchor
                 Drawing.setTranslate(legend, fullLayout.width - opts._width, legendPopupAnchorHeight * 0.03);
             }
