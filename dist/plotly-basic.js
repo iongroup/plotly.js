@@ -26636,7 +26636,6 @@ var Drawing = _dereq_('../drawing');
 var Color = _dereq_('../color');
 var svgTextUtils = _dereq_('../../lib/svg_text_utils');
 var handleClick = _dereq_('./handle_click');
-var xmlnsNamespaces = _dereq_('../../constants/xmlns_namespaces');
 
 var constants = _dereq_('./constants');
 var alignmentConstants = _dereq_('../../constants/alignment');
@@ -27454,7 +27453,7 @@ function getYanchor(opts) {
         'top';
 }
 
-},{"../../constants/alignment":142,"../../constants/xmlns_namespaces":146,"../../lib":166,"../../lib/events":159,"../../lib/svg_text_utils":187,"../../plots/plots":244,"../../registry":252,"../color":40,"../dragelement":59,"../drawing":62,"./constants":91,"./get_legend_data":94,"./handle_click":95,"./helpers":96,"./style":98,"d3":9}],94:[function(_dereq_,module,exports){
+},{"../../constants/alignment":142,"../../lib":166,"../../lib/events":159,"../../lib/svg_text_utils":187,"../../plots/plots":244,"../../registry":252,"../color":40,"../dragelement":59,"../drawing":62,"./constants":91,"./get_legend_data":94,"./handle_click":95,"./helpers":96,"./style":98,"d3":9}],94:[function(_dereq_,module,exports){
 /**
 * Copyright 2012-2021, Plotly, Inc.
 * All rights reserved.

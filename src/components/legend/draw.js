@@ -19,7 +19,6 @@ var Drawing = require('../drawing');
 var Color = require('../color');
 var svgTextUtils = require('../../lib/svg_text_utils');
 var handleClick = require('./handle_click');
-var xmlnsNamespaces = require('../../constants/xmlns_namespaces');
 
 var constants = require('./constants');
 var alignmentConstants = require('../../constants/alignment');
