@@ -26791,12 +26791,15 @@ module.exports = function draw(gd, opts) {
         var anchorIcon = Lib.ensureSingle(s, 'path');
         anchorIcon.attr('d', 'M255.998,90.001c91.74,0,166.002,74.241,166.002,165.998c0,91.741-74.245,166-166.002,166c-91.74,0-165.998-74.243-165.998-166C90,164.259,164.243,90.001,255.998,90.001 M255.998,50.001C142.229,50.001,50,142.229,50,255.999c0,113.771,92.229,206,205.998,206c113.771,0,206.002-92.229,206.002-206C462,142.229,369.77,50.001,255.998,50.001L255.998,50.001z M285.822,367.567h-57.646V230.6h57.646V367.567z M257,202.268c-17.522,0-31.729-14.206-31.729-31.73c0-17.522,14.206-31.729,31.729-31.729c17.524,0,31.728,14.206,31.728,31.729C288.728,188.062,274.524,202.268,257,202.268z');
     });
-    // transform the anchor icon to scale to required size and be fixed to top right position
-    legendPopupAnchor.attr("transform", `scale(0.03, 0.03) translate(${(fullLayout.width - 15) * 32}, -50)`);
+    var anchorScale = 0.035;
     // Create rect as the icon bg for proper onClick event registration
     var anchorIconBg = Lib.ensureSingle(legendPopupAnchor, 'rect');
-    const legendPopupAnchorBox = Drawing.bBox(legendPopupAnchor.node());
-    const [legendPopupAnchorHeight, legendPopupAnchorWidth] = [legendPopupAnchorBox.height, legendPopupAnchorBox.width];
+    var legendPopupAnchorBox = Drawing.bBox(legendPopupAnchor.node());
+    var legendPopupAnchorHeight = legendPopupAnchorBox.height;
+    var legendPopupAnchorWidth = legendPopupAnchorBox.width;
+    var fixedLegendAnchorPadding = 3;
+    // transform the anchor icon to scale to required size and be fixed to top right position
+    legendPopupAnchor.attr("transform", `translate(${fullLayout.width - legendPopupAnchorWidth * anchorScale - fixedLegendAnchorPadding}, ${fixedLegendAnchorPadding}) scale(${anchorScale}, ${anchorScale})`);
     anchorIconBg.attr('x', 0).attr('y', '0').attr('height', legendPopupAnchorHeight).attr('width', legendPopupAnchorWidth).style('fill', 'none').style('fill-opacity', '1');
 
     var clipPath = Lib.ensureSingleById(fullLayout._topdefs, 'clipPath', clipId, function(s) {
@@ -26900,7 +26903,7 @@ module.exports = function draw(gd, opts) {
                 legendPopupAnchor.style('display', 'block');
                 legendPopupAnchor.on('click', toggleLegendPopup.bind(this));
                 // translate the legend relative to the popupAnchor
-                Drawing.setTranslate(legend, fullLayout.width - opts._width, legendPopupAnchorHeight * 0.03);
+                Drawing.setTranslate(legend, fullLayout.width - opts._width - 1, legendPopupAnchorHeight * anchorScale + fixedLegendAnchorPadding + 1);
             }
 
             function toggleLegendPopup() {
@@ -87390,7 +87393,7 @@ module.exports = {
 'use strict';
 
 // package version injected by `npm run preprocess`
-exports.version = '1.56.0-ion10';
+exports.version = '1.56.0-ion11';
 
 },{}]},{},[8])(8)
 });
