@@ -41642,7 +41642,7 @@ function formatTime(x, tr) {
 exports.formatDate = function(x, fmt, tr, formatter, calendar, extraFormat) {
     calendar = isWorldCalendar(calendar) && calendar;
 
-    if(!fmt) {
+    if(!fmt || typeof fmt !== 'string') {
         if(tr === 'y') fmt = extraFormat.year;
         else if(tr === 'm') fmt = extraFormat.month;
         else if(tr === 'd') {
@@ -82101,7 +82101,7 @@ function styleTrace(gd, calcTrace) {
 'use strict';
 
 // package version injected by `npm run preprocess`
-exports.version = '1.56.0-ion11';
+exports.version = '1.56.0-ion12';
 
 },{}]},{},[4])(4)
 });
