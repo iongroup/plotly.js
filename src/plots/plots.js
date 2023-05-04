@@ -1901,7 +1901,19 @@ plots.autoMargin = function(gd, id, o) {
 
             // if the item is too big, just give it enough automargin to
             // make sure you can still grab it and bring it back
-            if(o.l + o.r > fullLayout.width * 0.5) {
+
+            // Check for max width parameter
+            // For pie charts we are calculating allowed max width for legend based on the complete layout width and height.
+            // In this case legend will be allowed a max width uptil which the plot's height === width
+            var maxWidth;
+            if(id === 'legend' && fullLayout.legend && typeof fullLayout.legend.maxwidth !== 'undefined') {
+                maxWidth = fullLayout.width * (fullLayout.legend.maxwidth / 100);
+            } else if(fullLayout._has('pie')) {
+                maxWidth = Math.max((fullLayout.width - fullLayout.height), (fullLayout.width * 0.5));
+            } else {
+                maxWidth = (fullLayout.width * 0.5);
+            }
+            if(o.l + o.r > maxWidth) {
                 Lib.log('Margin push', id, 'is too big in x, dropping');
                 o.l = o.r = 0;
             }
