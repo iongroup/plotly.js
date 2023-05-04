@@ -26526,15 +26526,6 @@ module.exports = {
         editType: 'legend',
         
     },
-    maxwidth: {
-        valType: 'number',
-        
-        min: 0,
-        max: 100,
-        editType: [
-            'Controls the max width allowed to legend before it is collapsed into a popup',
-        ].join(' ')
-    },
     title: {
         text: {
             valType: 'string',
@@ -26719,7 +26710,6 @@ module.exports = function legendDefaults(layoutIn, layoutOut, fullData) {
         coerce('title.side', orientation === 'h' ? 'left' : 'top');
         Lib.coerceFont(coerce, 'title.font', layoutOut.font);
     }
-    coerce('maxwidth');
 };
 
 },{"../../lib":174,"../../plot_api/plot_template":208,"../../plots/layout_attributes":250,"../../registry":260,"./attributes":97,"./helpers":103}],100:[function(_dereq_,module,exports){
@@ -26996,7 +26986,7 @@ module.exports = function draw(gd, opts) {
                 legend.on('wheel', function() {
                     scrollBoxY = Lib.constrain(
                         opts._scrollY +
-                            ((d3.event.deltaY / (scrollBarYMax * 5)) * scrollBoxYMax),
+                            ((d3.event.deltaY / scrollBarYMax) * scrollBoxYMax),
                         0, scrollBoxYMax);
                     scrollHandler(scrollBoxY, scrollBarHeight, scrollRatio);
                     if(scrollBoxY !== 0 && scrollBoxY !== scrollBoxYMax) {
@@ -67025,23 +67015,11 @@ plots.autoMargin = function(gd, id, o) {
 
             // if the item is too big, just give it enough automargin to
             // make sure you can still grab it and bring it back
-
-            // Check for max width parameter
-            // For pie charts we are calculating allowed max width for legend based on the complete layout width and height.
-            // In this case legend will be allowed a max width uptil which the plot's height === width
-            var maxWidth;
-            if(id === 'legend' && fullLayout.legend && typeof fullLayout.legend.maxwidth !== 'undefined') {
-                maxWidth = fullLayout.width * (fullLayout.legend.maxwidth / 100);
-            } else if(fullLayout._has('pie')) {
-                maxWidth = Math.max((fullLayout.width - fullLayout.height), (fullLayout.width * 0.5));
-            } else {
-                maxWidth = (fullLayout.width * 0.5);
-            }
-            if(o.l + o.r > maxWidth) {
+            if(o.l + o.r > fullLayout.width * 0.5) {
                 Lib.log('Margin push', id, 'is too big in x, dropping');
                 o.l = o.r = 0;
             }
-            if(o.b + o.t > (fullLayout.height * 0.5)) {
+            if(o.b + o.t > fullLayout.height * 0.5) {
                 Lib.log('Margin push', id, 'is too big in y, dropping');
                 o.b = o.t = 0;
             }

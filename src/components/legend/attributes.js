@@ -204,15 +204,6 @@ module.exports = {
             'Sets the vertical alignment of the symbols with respect to their associated text.',
         ].join(' ')
     },
-    maxwidth: {
-        valType: 'number',
-        role: 'style',
-        min: 0,
-        max: 100,
-        editType: [
-            'Controls the max width allowed to legend before it is collapsed into a popup',
-        ].join(' ')
-    },
     title: {
         text: {
             valType: 'string',

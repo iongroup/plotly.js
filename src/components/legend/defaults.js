@@ -130,5 +130,4 @@ module.exports = function legendDefaults(layoutIn, layoutOut, fullData) {
         coerce('title.side', orientation === 'h' ? 'left' : 'top');
         Lib.coerceFont(coerce, 'title.font', layoutOut.font);
     }
-    coerce('maxwidth');
 };
