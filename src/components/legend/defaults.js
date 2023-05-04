@@ -245,4 +245,5 @@ module.exports = function legendDefaults(layoutIn, layoutOut, fullData) {
 
         layoutOut._legends.push(legendId);
     }
+    coerce('maxwidth');
 };
