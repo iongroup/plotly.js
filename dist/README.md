@@ -51,7 +51,7 @@ object.  This property must be set before the plotly.js script tag, for example:
 Plotly.js defaults to US English (en-US) and includes British English (en) in the standard bundle.
 Many other localizations are available - here is an example using Swiss-German (de-CH),
 see the contents of this directory for the full list.
-They are also available on our CDN as https://cdn.plot.ly/plotly-locale-de-ch-latest.js OR https://cdn.plot.ly/plotly-locale-de-ch-1.56.0-ion12.js
+They are also available on our CDN as https://cdn.plot.ly/plotly-locale-de-ch-latest.js OR https://cdn.plot.ly/plotly-locale-de-ch-1.56.0-ion13.js
 Note that the file names are all lowercase, even though the region is uppercase when you apply a locale.
 
 *After* the plotly.js script tag, add:
@@ -74,12 +74,12 @@ The main plotly.js bundle includes all the official (non-beta) trace modules.
 
 It be can imported as minified javascript
 - using dist file `dist/plotly.min.js`
-- using CDN URL https://cdn.plot.ly/plotly-latest.min.js OR https://cdn.plot.ly/plotly-1.56.0-ion12.min.js
+- using CDN URL https://cdn.plot.ly/plotly-latest.min.js OR https://cdn.plot.ly/plotly-1.56.0-ion13.min.js
 
 or as raw javascript:
 - using the `plotly.js-dist` npm package (starting in `v1.39.0`)
 - using dist file `dist/plotly.js`
-- using CDN URL https://cdn.plot.ly/plotly-latest.js OR https://cdn.plot.ly/plotly-1.56.0-ion12.js
+- using CDN URL https://cdn.plot.ly/plotly-latest.js OR https://cdn.plot.ly/plotly-1.56.0-ion13.js
 - using CommonJS with `require('plotly.js')`
 
 If you would like to have access to the attribute meta information (including attribute descriptions as on the [schema reference page](https://plotly.com/javascript/reference/)), use dist file `dist/plotly-with-meta.js`
@@ -88,7 +88,7 @@ The main plotly.js bundle weights in at:
 
 | plotly.js | plotly.min.js | plotly.min.js + gzip | plotly-with-meta.js |
 |-----------|---------------|----------------------|---------------------|
-| 5.6 MB | 2.5 MB | 758.3 kB | 5.8 MB |
+| 5.6 MB | 2.5 MB | 758.4 kB | 5.8 MB |
 
 ## Partial bundles
 
@@ -112,7 +112,7 @@ The `basic` partial bundle contains trace modules `scatter`, `bar` and `pie`.
 
 | Raw size | Minified size | Minified + gzip size |
 |------|-----------------|------------------------|
-| 2.6 MB | 904.2 kB | 297.6 kB |
+| 2.6 MB | 904.5 kB | 297.7 kB |
 
 #### CDN links
 
@@ -120,8 +120,8 @@ The `basic` partial bundle contains trace modules `scatter`, `bar` and `pie`.
 | ------ | --- |
 | Latest | https://cdn.plot.ly/plotly-basic-latest.js |
 | Latest minified | https://cdn.plot.ly/plotly-basic-latest.min.js |
-| Tagged | https://cdn.plot.ly/plotly-basic-1.56.0-ion12.js |
-| Tagged minified | https://cdn.plot.ly/plotly-basic-1.56.0-ion12.min.js |
+| Tagged | https://cdn.plot.ly/plotly-basic-1.56.0-ion13.js |
+| Tagged minified | https://cdn.plot.ly/plotly-basic-1.56.0-ion13.min.js |
 
 #### npm package (starting in `v1.39.0`)
 
@@ -165,7 +165,7 @@ The `cartesian` partial bundle contains trace modules `scatter`, `bar`, `box`, `
 
 | Raw size | Minified size | Minified + gzip size |
 |------|-----------------|------------------------|
-| 3 MB | 1 MB | 350.2 kB |
+| 3 MB | 1 MB | 350.3 kB |
 
 #### CDN links
 
@@ -173,8 +173,8 @@ The `cartesian` partial bundle contains trace modules `scatter`, `bar`, `box`, `
 | ------ | --- |
 | Latest | https://cdn.plot.ly/plotly-cartesian-latest.js |
 | Latest minified | https://cdn.plot.ly/plotly-cartesian-latest.min.js |
-| Tagged | https://cdn.plot.ly/plotly-cartesian-1.56.0-ion12.js |
-| Tagged minified | https://cdn.plot.ly/plotly-cartesian-1.56.0-ion12.min.js |
+| Tagged | https://cdn.plot.ly/plotly-cartesian-1.56.0-ion13.js |
+| Tagged minified | https://cdn.plot.ly/plotly-cartesian-1.56.0-ion13.min.js |
 
 #### npm package (starting in `v1.39.0`)
 
@@ -218,7 +218,7 @@ The `geo` partial bundle contains trace modules `scatter`, `scattergeo` and `cho
 
 | Raw size | Minified size | Minified + gzip size |
 |------|-----------------|------------------------|
-| 2.6 MB | 930.6 kB | 306.9 kB |
+| 2.6 MB | 930.9 kB | 307 kB |
 
 #### CDN links
 
@@ -226,8 +226,8 @@ The `geo` partial bundle contains trace modules `scatter`, `scattergeo` and `cho
 | ------ | --- |
 | Latest | https://cdn.plot.ly/plotly-geo-latest.js |
 | Latest minified | https://cdn.plot.ly/plotly-geo-latest.min.js |
-| Tagged | https://cdn.plot.ly/plotly-geo-1.56.0-ion12.js |
-| Tagged minified | https://cdn.plot.ly/plotly-geo-1.56.0-ion12.min.js |
+| Tagged | https://cdn.plot.ly/plotly-geo-1.56.0-ion13.js |
+| Tagged minified | https://cdn.plot.ly/plotly-geo-1.56.0-ion13.min.js |
 
 #### npm package (starting in `v1.39.0`)
 
@@ -271,7 +271,7 @@ The `mapbox` partial bundle contains trace modules `scatter`, `scattermapbox`, `
 
 | Raw size | Minified size | Minified + gzip size |
 |------|-----------------|------------------------|
-| 3.4 MB | 1.6 MB | 493.8 kB |
+| 3.4 MB | 1.6 MB | 493.9 kB |
 
 #### CDN links
 
@@ -279,8 +279,8 @@ The `mapbox` partial bundle contains trace modules `scatter`, `scattermapbox`, `
 | ------ | --- |
 | Latest | https://cdn.plot.ly/plotly-mapbox-latest.js |
 | Latest minified | https://cdn.plot.ly/plotly-mapbox-latest.min.js |
-| Tagged | https://cdn.plot.ly/plotly-mapbox-1.56.0-ion12.js |
-| Tagged minified | https://cdn.plot.ly/plotly-mapbox-1.56.0-ion12.min.js |
+| Tagged | https://cdn.plot.ly/plotly-mapbox-1.56.0-ion13.js |
+| Tagged minified | https://cdn.plot.ly/plotly-mapbox-1.56.0-ion13.min.js |
 
 #### npm package (starting in `v1.39.0`)
 
@@ -324,7 +324,7 @@ The `finance` partial bundle contains trace modules `scatter`, `bar`, `histogram
 
 | Raw size | Minified size | Minified + gzip size |
 |------|-----------------|------------------------|
-| 2.8 MB | 993.8 kB | 323.4 kB |
+| 2.8 MB | 994.1 kB | 323.5 kB |
 
 #### CDN links
 
@@ -332,8 +332,8 @@ The `finance` partial bundle contains trace modules `scatter`, `bar`, `histogram
 | ------ | --- |
 | Latest | https://cdn.plot.ly/plotly-finance-latest.js |
 | Latest minified | https://cdn.plot.ly/plotly-finance-latest.min.js |
-| Tagged | https://cdn.plot.ly/plotly-finance-1.56.0-ion12.js |
-| Tagged minified | https://cdn.plot.ly/plotly-finance-1.56.0-ion12.min.js |
+| Tagged | https://cdn.plot.ly/plotly-finance-1.56.0-ion13.js |
+| Tagged minified | https://cdn.plot.ly/plotly-finance-1.56.0-ion13.min.js |
 
 #### npm package (starting in `v1.39.0`)
 

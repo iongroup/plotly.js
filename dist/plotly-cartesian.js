@@ -29861,6 +29861,15 @@ module.exports = {
         editType: 'legend',
         
     },
+    maxwidth: {
+        valType: 'number',
+        
+        min: 0,
+        max: 100,
+        editType: [
+            'Controls the max width allowed to legend before it is collapsed into a popup',
+        ].join(' ')
+    },
     title: {
         text: {
             valType: 'string',
@@ -30045,6 +30054,7 @@ module.exports = function legendDefaults(layoutIn, layoutOut, fullData) {
         coerce('title.side', orientation === 'h' ? 'left' : 'top');
         Lib.coerceFont(coerce, 'title.font', layoutOut.font);
     }
+    coerce('maxwidth');
 };
 
 },{"../../lib":197,"../../plot_api/plot_template":231,"../../plots/layout_attributes":273,"../../registry":288,"./attributes":120,"./helpers":126}],123:[function(_dereq_,module,exports){
@@ -30321,7 +30331,7 @@ module.exports = function draw(gd, opts) {
                 legend.on('wheel', function() {
                     scrollBoxY = Lib.constrain(
                         opts._scrollY +
-                            ((d3.event.deltaY / scrollBarYMax) * scrollBoxYMax),
+                            ((d3.event.deltaY / (scrollBarYMax * 5)) * scrollBoxYMax),
                         0, scrollBoxYMax);
                     scrollHandler(scrollBoxY, scrollBarHeight, scrollRatio);
                     if(scrollBoxY !== 0 && scrollBoxY !== scrollBoxYMax) {
@@ -70366,7 +70376,19 @@ plots.autoMargin = function(gd, id, o) {
 
             // if the item is too big, just give it enough automargin to
             // make sure you can still grab it and bring it back
-            if(o.l + o.r > fullLayout.width * 0.5) {
+
+            // Check for max width parameter
+            // For pie charts we are calculating allowed max width for legend based on the complete layout width and height.
+            // In this case legend will be allowed a max width uptil which the plot's height === width
+            var maxWidth;
+            if(id === 'legend' && fullLayout.legend && typeof fullLayout.legend.maxwidth !== 'undefined') {
+                maxWidth = fullLayout.width * (fullLayout.legend.maxwidth / 100);
+            } else if(fullLayout._has('pie')) {
+                maxWidth = Math.max((fullLayout.width - fullLayout.height), (fullLayout.width * 0.5));
+            } else {
+                maxWidth = (fullLayout.width * 0.5);
+            }
+            if(o.l + o.r > maxWidth) {
                 Lib.log('Margin push', id, 'is too big in x, dropping');
                 o.l = o.r = 0;
             }
@@ -94994,7 +95016,7 @@ module.exports = function style(gd) {
 'use strict';
 
 // package version injected by `npm run preprocess`
-exports.version = '1.56.0-ion12';
+exports.version = '1.56.0-ion13';
 
 },{}]},{},[11])(11)
 });
