@@ -271,7 +271,7 @@ module.exports = function draw(gd, opts) {
                 legend.on('wheel', function() {
                     scrollBoxY = Lib.constrain(
                         opts._scrollY +
-                            ((d3.event.deltaY / scrollBarYMax) * scrollBoxYMax),
+                            ((d3.event.deltaY / (scrollBarYMax * 5)) * scrollBoxYMax),
                         0, scrollBoxYMax);
                     scrollHandler(scrollBoxY, scrollBarHeight, scrollRatio);
                     if(scrollBoxY !== 0 && scrollBoxY !== scrollBoxYMax) {
