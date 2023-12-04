@@ -2107,7 +2107,8 @@ plots.doAutoMargin = function(gd) {
             }
         }
     }
-
+    const extraRMargin = 4;
+    const extraBMargin = 5;
     var minFinalWidth = Lib.constrain(
         width - margin.l - margin.r,
         MIN_SPECIFIED_WIDTH,
@@ -2145,8 +2146,13 @@ plots.doAutoMargin = function(gd) {
     gs.t = Math.round(mt) + reservedMargins.t;
     gs.b = Math.round(mb) + reservedMargins.b;
     gs.p = Math.round(margin.pad);
-    gs.w = Math.round(width) - gs.l - gs.r;
-    gs.h = Math.round(height) - gs.t - gs.b;
+    const roundedWidth = Math.round(width);
+    const roundedHeight = Math.round(height);
+    const lrMargin = (gs.l + gs.r);
+    const tbMargin = (gs.t + gs.b);
+    // If widht/height differece with margin is negative, then remove extra margin added above.
+    gs.w = roundedWidth - (lrMargin < roundedWidth ? lrMargin : lrMargin - extraRMargin);
+    gs.h = roundedHeight - (tbMargin < roundedHeight ? tbMargin : tbMargin - extraBMargin);
 
     // if things changed and we're not already redrawing, trigger a redraw
     if(!fullLayout._replotting && (plots.didMarginChange(oldMargins, gs) || needsRedrawForShift(gd))) {
