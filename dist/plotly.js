@@ -94240,14 +94240,20 @@ plots.doAutoMargin = function(gd) {
             }
         }
     }
-
+    const extraRMargin = 4;
+    const extraBMargin = 5;
     gs.l = Math.round(ml);
-    gs.r = Math.round(mr)+4;
+    gs.r = Math.round(mr) + extraRMargin;
     gs.t = Math.round(mt);
-    gs.b = Math.round(mb) + 5;
+    gs.b = Math.round(mb) + extraBMargin;
     gs.p = Math.round(margin.pad);
-    gs.w = Math.round(width) - gs.l - gs.r;
-    gs.h = Math.round(height) - gs.t - gs.b;
+    const roundedWidth = Math.round(width);
+    const roundedHeight = Math.round(height);
+    const lrMargin = (gs.l + gs.r);
+    const tbMargin = (gs.t + gs.b);
+    // If widht/height differece with margin is negative, then remove extra margin added above.
+    gs.w = roundedWidth - (lrMargin < roundedWidth ? lrMargin : lrMargin - extraRMargin);
+    gs.h = roundedHeight - (tbMargin < roundedHeight ? tbMargin : tbMargin - extraBMargin);
 
     // if things changed and we're not already redrawing, trigger a redraw
     if(!fullLayout._replotting && plots.didMarginChange(oldMargins, gs)) {
@@ -149266,7 +149272,7 @@ function getSortFunc(opts, d2c) {
 'use strict';
 
 // package version injected by `npm run preprocess`
-exports.version = '1.56.0-ion13';
+exports.version = '1.56.0-ion14';
 
 },{}]},{},[24])(24)
 });
