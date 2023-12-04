@@ -2024,6 +2024,8 @@ plots.doAutoMargin = function(gd) {
     }
     const extraRMargin = 4;
     const extraBMargin = 5;
+    const extraRMargin = 4;
+    const extraBMargin = 5;
     gs.l = Math.round(ml);
     gs.r = Math.round(mr) + extraRMargin;
     gs.t = Math.round(mt);
