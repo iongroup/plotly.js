@@ -82316,7 +82316,7 @@ module.exports = function selectPoints(searchInfo, selectionTester) {
 'use strict';
 
 // package version injected by `npm run preprocess`
-exports.version = '1.56.0-ion15';
+exports.version = '1.56.0-ion16';
 
 },{}]},{},[5])(5)
 });
