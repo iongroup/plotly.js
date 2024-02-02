@@ -865,15 +865,19 @@ function makeDragBox(gd, plotinfo, x, y, w, h, ns, ew) {
         // ticksAndAnnotations again - it's unnecessary and would overwrite `updates`
         updateSubplots([0, 0, pw, ph]);
 
-        // since we may have been redrawing some things during the drag, we may have
-        // accumulated MathJax promises - wait for them before we relayout.
-        Lib.syncOrAsync([
-            Plots.previousPromises,
-            function() {
-                gd._fullLayout._replotting = false;
-                Registry.call('_guiRelayout', gd, updates);
-            }
-        ], gd);
+        // Exception handling for ctrl+left/right-click, or shift+right-click. On these operations 'updates' is undefined.
+        // Above operations are not expected, this check is to hide the exception.
+        if(updates) {
+            // since we may have been redrawing some things during the drag, we may have
+            // accumulated MathJax promises - wait for them before we relayout.
+            Lib.syncOrAsync([
+                Plots.previousPromises,
+                function() {
+                    gd._fullLayout._replotting = false;
+                    Registry.call('_guiRelayout', gd, updates);
+                }
+            ], gd);
+        }
     }
 
     // updateSubplots - find all plot viewboxes that should be
