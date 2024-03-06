@@ -273,11 +273,12 @@ function drawOne(gd, opts) {
 
                     if(lx !== lx0) {
                         Lib.log('Constrain ' + legendId + '.x to make legend fit inside graph');
+                        hideLegendInPopup = true;
                     }
                     if(ly !== ly0) {
                         Lib.log('Constrain ' + legendId + '.y to make legend fit inside graph');
+                        hideLegendInPopup = true;
                     }
-                    hideLegendInPopup = true;
                 }
 
                 // Set size and position of all the elements that make up a legend:
@@ -287,13 +288,13 @@ function drawOne(gd, opts) {
 
             // Set size and position of all the elements that make up a legend:
             // legend, background and border, scroll box and scroll bar as well as title
-            if(opts._main && !hideLegendInPopup) {
+            if(!hideLegendInPopup) {
                 legend.style('display', 'block');
                 legend.classed('show-in-popup', false);
                 legendPopupAnchor.style('display', 'none');
                 Drawing.setTranslate(legend, lx, ly);
             }
-            if(opts._main && hideLegendInPopup) {
+            if(hideLegendInPopup) {
                 // Hide legend and remove in-popup class
                 legend.style('display', 'none');
                 legend.classed('show-in-popup', false);
@@ -588,8 +589,8 @@ function drawTexts(g, gd, legendObj) {
     var textEl = Lib.ensureSingle(g, 'text', legendId + 'text');
 
     var legendLabel = name;
-    if (opts.linesplit && opts.linesplit.linelen) {
-        legendLabel = helpers.splitLines(legendLabel, opts.linesplit);
+    if (legendObj.linesplit && legendObj.linesplit.linelen) {
+        legendLabel = helpers.splitLines(legendLabel, legendObj.linesplit);
     }
 
     textEl.attr('text-anchor', 'start')

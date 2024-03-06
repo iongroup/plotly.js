@@ -2107,8 +2107,7 @@ plots.doAutoMargin = function(gd) {
             }
         }
     }
-    const extraRMargin = 4;
-    const extraBMargin = 5;
+
     var minFinalWidth = Lib.constrain(
         width - margin.l - margin.r,
         MIN_SPECIFIED_WIDTH,
@@ -2140,11 +2139,12 @@ plots.doAutoMargin = function(gd) {
         }
     }
 
-
+    const extraRMargin = 4;
+    const extraBMargin = 5;
     gs.l = Math.round(ml) + reservedMargins.l;
-    gs.r = Math.round(mr) + reservedMargins.r;
+    gs.r = Math.round(mr) + reservedMargins.r + extraRMargin;
     gs.t = Math.round(mt) + reservedMargins.t;
-    gs.b = Math.round(mb) + reservedMargins.b;
+    gs.b = Math.round(mb) + reservedMargins.b + extraBMargin;
     gs.p = Math.round(margin.pad);
     const roundedWidth = Math.round(width);
     const roundedHeight = Math.round(height);

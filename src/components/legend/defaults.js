@@ -200,6 +200,7 @@ function groupDefaults(legendId, layoutIn, layoutOut, fullData) {
 
         Lib.coerceFont(coerce, 'title.font', dfltTitleFont);
     }
+    coerce('maxwidth');
 }
 
 module.exports = function legendDefaults(layoutIn, layoutOut, fullData) {
@@ -245,5 +246,4 @@ module.exports = function legendDefaults(layoutIn, layoutOut, fullData) {
 
         layoutOut._legends.push(legendId);
     }
-    coerce('maxwidth');
 };

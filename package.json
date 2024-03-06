@@ -1,6 +1,6 @@
 {
   "name": "@ionweb/plotly.js",
-  "version": "2.29.1",
+  "version": "2.29.1-ion1",
   "description": "The open source javascript graphing library that powers plotly",
   "license": "MIT",
   "main": "./lib/index.js",
@@ -29,7 +29,6 @@
     "schema": "node tasks/schema.js",
     "stats": "node tasks/stats.js",
     "find-strings": "node tasks/find_locale_strings.js",
-    "preprocess": "node tasks/preprocess.js",
     "use-draftlogs": "node tasks/use_draftlogs.js",
     "empty-draftlogs": "node tasks/empty_draftlogs.js",
     "empty-dist": "node tasks/empty_dist.js",
