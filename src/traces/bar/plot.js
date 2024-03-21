@@ -416,6 +416,8 @@ function appendBarText(gd, plotinfo, bar, cd, i, x0, x1, y0, y1, r, overhead, op
     var isHorizontal = (trace.orientation === 'h');
 
     var text = getText(fullLayout, cd, i, xa, ya);
+    // this is needed for Ion.Web, otherwise passing a point with text field renders unwanted text in bars
+    text = null;
 
     textPosition = getTextPosition(trace, i);
 

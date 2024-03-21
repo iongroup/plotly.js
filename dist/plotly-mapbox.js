@@ -1,5 +1,5 @@
 /**
-* plotly.js (mapbox) v2.29.1-ion1
+* plotly.js (mapbox) v2.29.1-ion2
 * Copyright 2012-2024, Plotly, Inc.
 * All rights reserved.
 * Licensed under the MIT license
@@ -62119,7 +62119,7 @@ function getSortFunc(opts, d2c) {
 
 
 // package version injected by `npm run preprocess`
-exports.version = '2.29.1-ion1';
+exports.version = '2.29.1-ion2';
 
 /***/ }),
 

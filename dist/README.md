@@ -43,12 +43,12 @@ The main plotly.js bundles weight in at:
 
 | plotly.js | plotly.min.js | plotly.min.js + gzip | plotly-with-meta.js |
 |-----------|---------------|----------------------|---------------------|
-| 6.6 MB | 2.7 MB | 830.9 kB | 6.8 MB |
+| 6.6 MB | 2.7 MB | 830 kB | 6.8 MB |
 
 #### CDN links
-> https://cdn.plot.ly/plotly-2.29.1-ion1.js
+> https://cdn.plot.ly/plotly-2.29.1-ion2.js
 
-> https://cdn.plot.ly/plotly-2.29.1-ion1.min.js
+> https://cdn.plot.ly/plotly-2.29.1-ion2.min.js
 
 
 #### npm packages
@@ -88,12 +88,12 @@ The `basic` partial bundle contains trace modules `bar`, `pie` and `scatter`.
 
 | Raw size | Minified size | Minified + gzip size |
 |------|-----------------|------------------------|
-| 2.6 MB | 980 kB | 330 kB |
+| 2.6 MB | 977.8 kB | 329.1 kB |
 
 #### CDN links
-> https://cdn.plot.ly/plotly-basic-2.29.1-ion1.js
+> https://cdn.plot.ly/plotly-basic-2.29.1-ion2.js
 
-> https://cdn.plot.ly/plotly-basic-2.29.1-ion1.min.js
+> https://cdn.plot.ly/plotly-basic-2.29.1-ion2.min.js
 
 
 #### npm packages
@@ -111,12 +111,12 @@ The `cartesian` partial bundle contains trace modules `bar`, `box`, `contour`, `
 
 | Raw size | Minified size | Minified + gzip size |
 |------|-----------------|------------------------|
-| 3.3 MB | 1.2 MB | 417.7 kB |
+| 3.3 MB | 1.2 MB | 416.4 kB |
 
 #### CDN links
-> https://cdn.plot.ly/plotly-cartesian-2.29.1-ion1.js
+> https://cdn.plot.ly/plotly-cartesian-2.29.1-ion2.js
 
-> https://cdn.plot.ly/plotly-cartesian-2.29.1-ion1.min.js
+> https://cdn.plot.ly/plotly-cartesian-2.29.1-ion2.min.js
 
 
 #### npm packages
@@ -137,9 +137,9 @@ The `geo` partial bundle contains trace modules `choropleth`, `scatter` and `sca
 | 3.1 MB | 1.1 MB | 373 kB |
 
 #### CDN links
-> https://cdn.plot.ly/plotly-geo-2.29.1-ion1.js
+> https://cdn.plot.ly/plotly-geo-2.29.1-ion2.js
 
-> https://cdn.plot.ly/plotly-geo-2.29.1-ion1.min.js
+> https://cdn.plot.ly/plotly-geo-2.29.1-ion2.min.js
 
 
 #### npm packages
@@ -160,9 +160,9 @@ The `mapbox` partial bundle contains trace modules `choroplethmapbox`, `densitym
 | 4.4 MB | 1.7 MB | 532 kB |
 
 #### CDN links
-> https://cdn.plot.ly/plotly-mapbox-2.29.1-ion1.js
+> https://cdn.plot.ly/plotly-mapbox-2.29.1-ion2.js
 
-> https://cdn.plot.ly/plotly-mapbox-2.29.1-ion1.min.js
+> https://cdn.plot.ly/plotly-mapbox-2.29.1-ion2.min.js
 
 
 #### npm packages
@@ -180,12 +180,12 @@ The `finance` partial bundle contains trace modules `bar`, `candlestick`, `funne
 
 | Raw size | Minified size | Minified + gzip size |
 |------|-----------------|------------------------|
-| 2.8 MB | 1 MB | 359 kB |
+| 2.8 MB | 1 MB | 358 kB |
 
 #### CDN links
-> https://cdn.plot.ly/plotly-finance-2.29.1-ion1.js
+> https://cdn.plot.ly/plotly-finance-2.29.1-ion2.js
 
-> https://cdn.plot.ly/plotly-finance-2.29.1-ion1.min.js
+> https://cdn.plot.ly/plotly-finance-2.29.1-ion2.min.js
 
 
 #### npm packages

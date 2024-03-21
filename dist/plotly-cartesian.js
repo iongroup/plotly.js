@@ -1,5 +1,5 @@
 /**
-* plotly.js (cartesian) v2.29.1-ion1
+* plotly.js (cartesian) v2.29.1-ion2
 * Copyright 2012-2024, Plotly, Inc.
 * All rights reserved.
 * Licensed under the MIT license
@@ -55694,6 +55694,8 @@ function appendBarText(gd, plotinfo, bar, cd, i, x0, x1, y0, y1, r, overhead, op
   var trace = cd[0].trace;
   var isHorizontal = trace.orientation === 'h';
   var text = getText(fullLayout, cd, i, xa, ya);
+  // this is needed for Ion.Web, otherwise passing a point with text field renders unwanted text in bars
+  text = null;
   textPosition = getTextPosition(trace, i);
 
   // compute text position
@@ -71693,7 +71695,7 @@ function getSortFunc(opts, d2c) {
 
 
 // package version injected by `npm run preprocess`
-exports.version = '2.29.1-ion1';
+exports.version = '2.29.1-ion2';
 
 /***/ }),
 
