@@ -124,7 +124,7 @@ var Tabs = {
 
         source.remove();
 
-        window.Plotly = null;
+        window.plotly = null;
 
         source = document.createElement('script');
         source.id = 'source';
@@ -137,7 +137,7 @@ var Tabs = {
         reloaded.textContent = 'last reload at ' + reloadTime;
 
         var interval = setInterval(function() {
-            if(window.Plotly) {
+            if(window.plotly) {
                 clearInterval(interval);
                 handleOnLoad();
                 Tabs.onReload();

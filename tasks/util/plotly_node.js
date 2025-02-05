@@ -14,5 +14,5 @@ module.exports = function plotlyNode(plotlyPath) {
     scriptEl.textContent = fs.readFileSync(plotlyPath, { encoding: 'utf-8' });
     window.document.body.appendChild(scriptEl);
 
-    return window.Plotly;
+    return window.plotly;
 };

@@ -44,7 +44,7 @@ module.exports = function _bundle(pathToIndex, pathToBundle, opts, cb) {
     config.output.path = parsedPath.dir;
     config.output.filename = parsedPath.base;
 
-    config.output.library.name = opts.standalone || 'Plotly';
+    config.output.library.name = config.output.library.name || opts.standalone || 'Plotly';
 
     config.optimization = {
         minimize: !!(pathToMinBundle && pending === 1)

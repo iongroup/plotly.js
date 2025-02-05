@@ -13,7 +13,7 @@ describe('Test plotly.min.js', function() {
     document.body.appendChild(gd);
 
     it('should expose Plotly global', function() {
-        expect(window.Plotly).toBeDefined();
+        expect(window.plotly).toBeDefined();
     });
 
     Plotly.setPlotConfig({

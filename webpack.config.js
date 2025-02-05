@@ -8,9 +8,9 @@ module.exports = {
         path: path.resolve('./build'),
         filename: 'plotly.js',
         library: {
-            name: 'Plotly',
+            name: 'plotly',
             type: 'umd',
-            umdNamedDefine: false
+            umdNamedDefine: true
         }
     },
     module: {
