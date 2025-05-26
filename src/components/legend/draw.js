@@ -257,6 +257,45 @@ function drawOne(gd, opts) {
                     hideLegendInPopup = true;
                 }
 
+                const legendVerticalPositionOutsidePlot = legendObj.y > 1 ? 'top': legendObj.y < 0 ? 'bottom': null;
+
+                if (legendVerticalPositionOutsidePlot) {
+                    const tickLabels = fullLayout._cartesianlayer.selectAll('g[class$="tick"]')[0];
+                    if (tickLabels.length) {
+                        if (legendVerticalPositionOutsidePlot === 'bottom') {
+                            let bottomMostTick = tickLabels[0];
+                            let bottomMostTickBottomPosition = bottomMostTick.getBoundingClientRect().bottom;
+                            for (let i = 1; i < tickLabels.length; i++) {
+                                const tickBottomPosition = tickLabels[i].getBoundingClientRect().bottom;
+                                if (bottomMostTickBottomPosition < tickBottomPosition) {
+                                    bottomMostTick = tickLabels[i];
+                                    bottomMostTickBottomPosition = tickBottomPosition;
+                                }
+                            }
+                            if (bottomMostTickBottomPosition > ly + legendObj._effHeight) {
+                                legendObj.y -= bottomMostTick.getBoundingClientRect().height / fullLayout.height;
+                                ly = gs.t + gs.h * (1 - legendObj.y) - FROM_TL[getYanchor(legendObj)] * legendObj._effHeight;
+                                ly = Lib.constrain(ly, 0, fullLayout.height - legendObj._effHeight);
+                            }
+                        } else {
+                            let topMostTick = tickLabels[0];
+                            let topMostTickTopPosition = topMostTick.getBoundingClientRect().top;
+                            for (let i = 1; i < tickLabels.length; i++) {
+                                const tickTopPosition = tickLabels[i].getBoundingClientRect().top;
+                                if (topMostTickTopPosition > tickTopPosition) {
+                                    topMostTick = tickLabels[i];
+                                    topMostTickTopPosition = tickTopPosition;
+                                }
+                            }
+                            if (topMostTickTopPosition < ly) {
+                                legendObj.y += topMostTick.getBoundingClientRect().height / fullLayout.height;
+                                ly = gs.t + gs.h * (1 - legendObj.y) - FROM_TL[getYanchor(legendObj)] * legendObj._effHeight;
+                                ly = Lib.constrain(ly, 0, fullLayout.height - legendObj._effHeight);
+                            }
+                        }
+                    }
+                }
+
                 var expMargin = expandMargin(gd, legendId, lx, ly);
 
                 // IF expandMargin return a Promise (which is truthy),

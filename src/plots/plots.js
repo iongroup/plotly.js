@@ -1937,6 +1937,10 @@ plots.autoMargin = function(gd, id, o) {
     );
 
     var maxSpaceW = Math.max(0, width - minFinalWidth);
+    if (fullLayout.legend && fullLayout.legend.maxwidth) {
+        maxSpaceW = Math.min(maxSpaceW, ((width * fullLayout.legend.maxwidth) / 100));
+    }
+    
     var maxSpaceH = Math.max(0, height - minFinalHeight);
 
     var pushMargin = fullLayout._pushmargin;
@@ -2121,6 +2125,9 @@ plots.doAutoMargin = function(gd) {
     );
 
     var maxSpaceW = Math.max(0, width - minFinalWidth);
+    if (fullLayout.legend && fullLayout.legend.maxwidth) {
+        maxSpaceW = Math.min(maxSpaceW, ((width * fullLayout.legend.maxwidth) / 100));
+    }
     var maxSpaceH = Math.max(0, height - minFinalHeight);
 
     if(maxSpaceW) {
