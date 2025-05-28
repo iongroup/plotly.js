@@ -254,46 +254,6 @@ function drawOne(gd, opts) {
                     ly = gs.t + gs.h * (1 - legendObj.y) - FROM_TL[getYanchor(legendObj)] * legendObj._effHeight;
                 } else {
                     ly = fullLayout.height * (1 - legendObj.y) - FROM_TL[getYanchor(legendObj)] * legendObj._effHeight;
-                    hideLegendInPopup = true;
-                }
-
-                const legendVerticalPositionOutsidePlot = legendObj.y > 1 ? 'top': legendObj.y < 0 ? 'bottom': null;
-
-                if (legendVerticalPositionOutsidePlot) {
-                    const tickLabels = fullLayout._cartesianlayer.selectAll('g[class$="tick"]')[0];
-                    if (tickLabels.length) {
-                        if (legendVerticalPositionOutsidePlot === 'bottom') {
-                            let bottomMostTick = tickLabels[0];
-                            let bottomMostTickBottomPosition = bottomMostTick.getBoundingClientRect().bottom;
-                            for (let i = 1; i < tickLabels.length; i++) {
-                                const tickBottomPosition = tickLabels[i].getBoundingClientRect().bottom;
-                                if (bottomMostTickBottomPosition < tickBottomPosition) {
-                                    bottomMostTick = tickLabels[i];
-                                    bottomMostTickBottomPosition = tickBottomPosition;
-                                }
-                            }
-                            if (bottomMostTickBottomPosition > ly + legendObj._effHeight) {
-                                legendObj.y -= bottomMostTick.getBoundingClientRect().height / fullLayout.height;
-                                ly = gs.t + gs.h * (1 - legendObj.y) - FROM_TL[getYanchor(legendObj)] * legendObj._effHeight;
-                                ly = Lib.constrain(ly, 0, fullLayout.height - legendObj._effHeight);
-                            }
-                        } else {
-                            let topMostTick = tickLabels[0];
-                            let topMostTickTopPosition = topMostTick.getBoundingClientRect().top;
-                            for (let i = 1; i < tickLabels.length; i++) {
-                                const tickTopPosition = tickLabels[i].getBoundingClientRect().top;
-                                if (topMostTickTopPosition > tickTopPosition) {
-                                    topMostTick = tickLabels[i];
-                                    topMostTickTopPosition = tickTopPosition;
-                                }
-                            }
-                            if (topMostTickTopPosition < ly) {
-                                legendObj.y += topMostTick.getBoundingClientRect().height / fullLayout.height;
-                                ly = gs.t + gs.h * (1 - legendObj.y) - FROM_TL[getYanchor(legendObj)] * legendObj._effHeight;
-                                ly = Lib.constrain(ly, 0, fullLayout.height - legendObj._effHeight);
-                            }
-                        }
-                    }
                 }
 
                 var expMargin = expandMargin(gd, legendId, lx, ly);
@@ -316,13 +276,41 @@ function drawOne(gd, opts) {
                     }
                     if(ly !== ly0) {
                         Lib.log('Constrain ' + legendId + '.y to make legend fit inside graph');
-                        hideLegendInPopup = true;
                     }
                 }
 
                 // Set size and position of all the elements that make up a legend:
                 // legend, background and border, scroll box and scroll bar as well as title
                 Drawing.setTranslate(legend, lx, ly);
+
+                const legendVerticalPositionOutsidePlot = legendObj.y > 1 ? 'top': legendObj.y < 0 ? 'bottom': null;
+                const cartesianNode = fullLayout._cartesianlayer.node();
+                const cartesianNodeBoundRect = cartesianNode.getBoundingClientRect();
+                const legendNodeBoundRect = legend.node().getBoundingClientRect();
+                const legendPaddingDelta = 2 * (bw + constants.itemGap);
+                if (legendVerticalPositionOutsidePlot) {
+                    const ly0 = ly;
+                    if (legendVerticalPositionOutsidePlot === 'bottom') {
+                        if (cartesianNodeBoundRect.bottom > legendNodeBoundRect.top) {
+                            const delta = cartesianNodeBoundRect.bottom - legendNodeBoundRect.top + legendPaddingDelta;
+                            legendObj.y -= delta / fullLayout.height;
+                            ly += delta;
+                        }
+                    } else {
+                        if (cartesianNodeBoundRect.top < legendNodeBoundRect.bottom) {
+                            const delta = legendNodeBoundRect.bottom - cartesianNodeBoundRect.top + legendPaddingDelta;
+                            legendObj.y += delta / fullLayout.height;
+                            ly -= delta;
+                        }
+                    }
+
+                    if (ly !== ly0) {
+                        const expMargin = expandMargin(gd, legendId, lx, ly);
+                        if (expMargin) return;
+                        ly = Lib.constrain(ly, 0, fullLayout.height - legendObj._effHeight);
+                        Drawing.setTranslate(legend, lx, ly);
+                    }
+                }
             }
 
             // Set size and position of all the elements that make up a legend:
