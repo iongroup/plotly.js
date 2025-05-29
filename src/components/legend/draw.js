@@ -254,6 +254,7 @@ function drawOne(gd, opts) {
                     ly = gs.t + gs.h * (1 - legendObj.y) - FROM_TL[getYanchor(legendObj)] * legendObj._effHeight;
                 } else {
                     ly = fullLayout.height * (1 - legendObj.y) - FROM_TL[getYanchor(legendObj)] * legendObj._effHeight;
+                    hideLegendInPopup = true;
                 }
 
                 var expMargin = expandMargin(gd, legendId, lx, ly);
@@ -276,6 +277,7 @@ function drawOne(gd, opts) {
                     }
                     if(ly !== ly0) {
                         Lib.log('Constrain ' + legendId + '.y to make legend fit inside graph');
+                        hideLegendInPopup = true;
                     }
                 }
 
@@ -286,29 +288,34 @@ function drawOne(gd, opts) {
                 const legendVerticalPositionOutsidePlot = legendObj.y > 1 ? 'top': legendObj.y < 0 ? 'bottom': null;
                 const cartesianNode = fullLayout._cartesianlayer.node();
                 const cartesianNodeBoundRect = cartesianNode.getBoundingClientRect();
+                const hasTickLabels = fullLayout._cartesianlayer.selectAll('g[class$="tick"]').size() > 0;
                 const legendNodeBoundRect = legend.node().getBoundingClientRect();
                 const legendPaddingDelta = 2 * (bw + constants.itemGap);
                 if (legendVerticalPositionOutsidePlot) {
-                    const ly0 = ly;
-                    if (legendVerticalPositionOutsidePlot === 'bottom') {
-                        if (cartesianNodeBoundRect.bottom > legendNodeBoundRect.top) {
-                            const delta = cartesianNodeBoundRect.bottom - legendNodeBoundRect.top + legendPaddingDelta;
-                            legendObj.y -= delta / fullLayout.height;
-                            ly += delta;
+                    if (legendObj._effHeight / fullLayout.height >= 0.5) {
+                        hideLegendInPopup = true;
+                    } else if (hasTickLabels) {
+                        const intialLy = ly;
+                        if (legendVerticalPositionOutsidePlot === 'bottom') {
+                            if (cartesianNodeBoundRect.bottom > legendNodeBoundRect.top) {
+                                const delta = cartesianNodeBoundRect.bottom - legendNodeBoundRect.top + legendPaddingDelta;
+                                legendObj.y -= (delta / fullLayout.height);
+                                ly += delta;
+                            }
+                        } else {
+                            if (cartesianNodeBoundRect.top < legendNodeBoundRect.bottom) {
+                                const delta = legendNodeBoundRect.bottom - cartesianNodeBoundRect.top + legendPaddingDelta;
+                                legendObj.y += (delta / fullLayout.height);
+                                ly -= delta;
+                            }
                         }
-                    } else {
-                        if (cartesianNodeBoundRect.top < legendNodeBoundRect.bottom) {
-                            const delta = legendNodeBoundRect.bottom - cartesianNodeBoundRect.top + legendPaddingDelta;
-                            legendObj.y += delta / fullLayout.height;
-                            ly -= delta;
-                        }
-                    }
 
-                    if (ly !== ly0) {
-                        const expMargin = expandMargin(gd, legendId, lx, ly);
-                        if (expMargin) return;
-                        ly = Lib.constrain(ly, 0, fullLayout.height - legendObj._effHeight);
-                        Drawing.setTranslate(legend, lx, ly);
+                        if (ly !== intialLy) {
+                            const expMargin = expandMargin(gd, legendId, lx, ly);
+                            if (expMargin) return;
+                            ly = Lib.constrain(ly, 0, fullLayout.height - legendObj._effHeight);
+                            Drawing.setTranslate(legend, lx, ly);
+                        }
                     }
                 }
             }
