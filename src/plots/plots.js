@@ -1941,6 +1941,9 @@ plots.autoMargin = function(gd, id, o) {
     const legendObj = fullLayout.legend;
     if (legendObj && legendObj.maxwidth) {
         maxSpaceW = Math.min(maxSpaceW, ((width * legendObj.maxwidth) / 100));
+        if (fullLayout._has('pie')) {
+            maxSpaceW = Math.max(maxSpaceW, width - height);
+        }
     }
     
     var maxSpaceH = Math.max(0, height - minFinalHeight);
@@ -2146,6 +2149,9 @@ plots.doAutoMargin = function(gd) {
     var maxSpaceW = Math.max(0, width - minFinalWidth);
     if (fullLayout.legend && fullLayout.legend.maxwidth) {
         maxSpaceW = Math.min(maxSpaceW, ((width * fullLayout.legend.maxwidth) / 100));
+        if (fullLayout._has('pie')) {
+            maxSpaceW = Math.max(maxSpaceW, width - height);
+        }
     }
     var maxSpaceH = Math.max(0, height - minFinalHeight);
 
