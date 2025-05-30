@@ -1937,6 +1937,15 @@ plots.autoMargin = function(gd, id, o) {
     );
 
     var maxSpaceW = Math.max(0, width - minFinalWidth);
+
+    const legendObj = fullLayout.legend;
+    if (legendObj && legendObj.maxwidth) {
+        maxSpaceW = Math.min(maxSpaceW, ((width * legendObj.maxwidth) / 100));
+        if (fullLayout._has('pie')) {
+            maxSpaceW = Math.max(maxSpaceW, width - height);
+        }
+    }
+    
     var maxSpaceH = Math.max(0, height - minFinalHeight);
 
     var pushMargin = fullLayout._pushmargin;
@@ -1952,6 +1961,23 @@ plots.autoMargin = function(gd, id, o) {
                 // if no explicit pad is given, use 12px unless there's a
                 // specified margin that's smaller than that
                 pad = Math.min(0, margin.l, margin.r, margin.t, margin.b);
+            }
+
+            if (legendObj) {
+                const legendHorizontalPositionOutsidePlot = legendObj.x > 1 || legendObj.x < 0;
+                
+                // this calculation needs to be refined to fully support dropping of horizontal margin.
+                if (legendHorizontalPositionOutsidePlot && ((o.l + o.r) >= (width * ((legendObj.maxwidth / 100) || 0.5)))) {
+                    // drop horizontal margin for the case for which legends are hidden
+                    o.l = o.r = 0;
+                }
+
+                const legendVerticalPositionOutsidePlot = legendObj.y > 1 || legendObj.y < 0;
+                
+                if (legendVerticalPositionOutsidePlot && ((o.t + o.b) >= (height * 0.5))) {
+                    // drop vertical margin for the case for which legends are hidden
+                    o.t = o.b = 0;
+                } 
             }
 
             // if the item is too big, just give it enough automargin to
@@ -2121,6 +2147,12 @@ plots.doAutoMargin = function(gd) {
     );
 
     var maxSpaceW = Math.max(0, width - minFinalWidth);
+    if (fullLayout.legend && fullLayout.legend.maxwidth) {
+        maxSpaceW = Math.min(maxSpaceW, ((width * fullLayout.legend.maxwidth) / 100));
+        if (fullLayout._has('pie')) {
+            maxSpaceW = Math.max(maxSpaceW, width - height);
+        }
+    }
     var maxSpaceH = Math.max(0, height - minFinalHeight);
 
     if(maxSpaceW) {
