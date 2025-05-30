@@ -1964,18 +1964,18 @@ plots.autoMargin = function(gd, id, o) {
             }
 
             if (legendObj) {
-                // drop horizontal margin for the case for which legends are hidden
-                const legendHorizontalPositionOutsidePlot = legendObj.x > 1 ? 'right': legendObj.x < 0 ? 'left': null;
-
+                const legendHorizontalPositionOutsidePlot = legendObj.x > 1 || legendObj.x < 0;
+                
                 // this calculation needs to be refined to fully support dropping of horizontal margin.
                 if (legendHorizontalPositionOutsidePlot && ((o.l + o.r) >= (width * ((legendObj.maxwidth / 100) || 0.5)))) {
+                    // drop horizontal margin for the case for which legends are hidden
                     o.l = o.r = 0;
                 }
 
-                // drop vertical margin for the case for which legends are hidden
-                const legendVerticalPositionOutsidePlot = legendObj.y > 1 ? 'top': legendObj.y < 0 ? 'bottom': null;
-
+                const legendVerticalPositionOutsidePlot = legendObj.y > 1 || legendObj.y < 0;
+                
                 if (legendVerticalPositionOutsidePlot && ((o.t + o.b) >= (height * 0.5))) {
+                    // drop vertical margin for the case for which legends are hidden
                     o.t = o.b = 0;
                 } 
             }
