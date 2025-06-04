@@ -289,13 +289,13 @@ module.exports = function handleClick(g, gd, numClicks) {
             }
         }
 
-        // Allows listeners to detect when plot visibility is toggled
-        gd.emit('plotly_legend_toggleVisible', { attrUpdate: dataUpdate, attrIndices: dataIndices });
-
-		if(shapesUpdated) {
+        if(shapesUpdated) {
             Registry.call('_guiUpdate', gd, dataUpdate, {shapes: updatedShapes}, dataIndices);
         } else {
             Registry.call('_guiRestyle', gd, dataUpdate, dataIndices);
         }
+
+        // Allows listeners to detect when plot visibility is toggled
+        gd.emit('plotly_legend_toggleVisible', { attrUpdate: dataUpdate, attrIndices: dataIndices });
     }
 };

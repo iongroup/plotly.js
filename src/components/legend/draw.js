@@ -281,31 +281,27 @@ function drawOne(gd, opts) {
                     }
                 }
 
-                // Set size and position of all the elements that make up a legend:
-                // legend, background and border, scroll box and scroll bar as well as title
-                Drawing.setTranslate(legend, lx, ly);
-
                 const legendVerticalPositionOutsideBottom = legendObj.y < 0;
                 const cartesianNode = fullLayout._cartesianlayer.node();
                 const cartesianNodeBoundRect = cartesianNode.getBoundingClientRect();
                 const hasTickLabels = fullLayout._cartesianlayer.selectAll('g[class$="tick"]').size() > 0;
                 const legendNodeBoundRect = legend.node().getBoundingClientRect();
-                const legendPaddingDelta = 2 * (bw + constants.itemGap);
+                const legendPaddingDelta = (bw + constants.itemGap);
                 if (legendVerticalPositionOutsideBottom) {
                     if (legendObj._effHeight / fullLayout.height >= 0.5) {
                         hideLegendInPopup = true;
                     } else if (hasTickLabels) {
-                        const intialLy = ly;
-                        if (cartesianNodeBoundRect.bottom > legendNodeBoundRect.top) {
+                        let y = ly;
+                        if (cartesianNodeBoundRect.bottom > legendNodeBoundRect.top + legendPaddingDelta) {
                             const delta = cartesianNodeBoundRect.bottom - legendNodeBoundRect.top + legendPaddingDelta;
                             legendObj.y -= (delta / fullLayout.height);
-                            ly += delta;
+                            y += delta;
                         }
 
-                        if (ly !== intialLy) {
-                            const expMargin = expandMargin(gd, legendId, lx, ly);
+                        if (y !== ly) {
+                            y = Lib.constrain(y, 0, fullLayout.height - legendObj._effHeight);
+                            const expMargin = expandMargin(gd, legendId, lx, y);
                             if (expMargin) return;
-                            ly = Lib.constrain(ly, 0, fullLayout.height - legendObj._effHeight);
                         }
                     }
                 }
