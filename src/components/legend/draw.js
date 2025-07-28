@@ -63,7 +63,7 @@ function horizontalAlignTitle(titleEl, legendObj, bw) {
     var titleOffset = 0;
     var textNode = titleEl.node();
 
-    var width = Drawing.bBox(textNode).width;  // width of the title text
+    var width = textNode.getBBox().width;  // width of the title text
 
     if(legendObj.title.side === 'top center') {
         titleOffset = 0.5 * (legendObj._width - 2 * bw - 2 * constants.titlePad - width);
@@ -165,7 +165,7 @@ function drawOne(gd, opts) {
     var anchorScale = 0.035;
     // Create rect as the icon bg for proper onClick event registration
     var anchorIconBg = Lib.ensureSingle(legendPopupAnchor, 'rect');
-    var legendPopupAnchorBox = Drawing.bBox(legendPopupAnchor.node());
+    var legendPopupAnchorBox = legendPopupAnchor.node().getBBox();
     var legendPopupAnchorHeight = legendPopupAnchorBox.height;
     var legendPopupAnchorWidth = legendPopupAnchorBox.width;
     var fixedLegendAnchorPadding = 3;
@@ -743,7 +743,7 @@ function computeTextDimensions(g, gd, legendObj, aTitle) {
     var height, width;
 
     if(mathjaxNode) {
-        var mathjaxBB = Drawing.bBox(mathjaxNode);
+        var mathjaxBB = mathjaxNode.getBBox();
 
         height = mathjaxBB.height;
         width = mathjaxBB.width;
@@ -764,7 +764,7 @@ function computeTextDimensions(g, gd, legendObj, aTitle) {
         var textNode = textEl.node();
 
         height = lineHeight * textLines;
-        width = textNode ? Drawing.bBox(textNode).width : 0;
+        width = textNode ? textNode.getBBox().width : 0;
 
         // approximation to height offset to center the font
         // to avoid getBoundingClientRect

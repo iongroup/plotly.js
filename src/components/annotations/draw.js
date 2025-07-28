@@ -267,8 +267,8 @@ function drawRaw(gd, options, index, subplotId, xa, ya) {
 
         var mathjaxGroup = annTextGroupInner.select('.annotation-text-math-group');
         var hasMathjax = !mathjaxGroup.empty();
-        var anntextBB = Drawing.bBox(
-                (hasMathjax ? mathjaxGroup : annText).node());
+        var annTextNode = (hasMathjax ? mathjaxGroup : annText).node();
+        var anntextBB = annTextNode.getBBox();
         var textWidth = anntextBB.width;
         var textHeight = anntextBB.height;
         var annWidth = options.width || textWidth;
@@ -459,8 +459,8 @@ function drawRaw(gd, options, index, subplotId, xa, ya) {
             })
             .call(Drawing.setClipUrl, isSizeConstrained ? annClipID : null, gd);
         } else {
-            var texty = borderfull + yShift - anntextBB.top;
-            var textx = borderfull + xShift - anntextBB.left;
+            var texty = borderfull + yShift - anntextBB.y;
+            var textx = borderfull + xShift - anntextBB.x;
 
             annText.call(svgTextUtils.positionText, textx, texty)
                 .call(Drawing.setClipUrl, isSizeConstrained ? annClipID : null, gd);
