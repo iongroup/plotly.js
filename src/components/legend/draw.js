@@ -271,11 +271,15 @@ function drawOne(gd, opts) {
                     lx = isPaperX ? Lib.constrain(lx, 0, fullLayout.width - legendObj._width) : lx0;
                     ly = isPaperY ? Lib.constrain(ly, 0, fullLayout.height - legendObj._effHeight) : ly0;
 
-                    if(lx !== lx0) {
+                    const diffX = Math.abs(lx0 - lx);
+                    const diffY = Math.abs(ly0 - ly);
+
+                    // since pixels can't be fractional we added a check to see if the diff is less than 1px.
+                    if(diffX > 1) {
                         Lib.log('Constrain ' + legendId + '.x to make legend fit inside graph');
                         hideLegendInPopup = true;
                     }
-                    if(ly !== ly0) {
+                    if(diffY > 1) {
                         Lib.log('Constrain ' + legendId + '.y to make legend fit inside graph');
                         hideLegendInPopup = true;
                     }
