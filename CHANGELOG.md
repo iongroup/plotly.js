@@ -9,6 +9,34 @@ To see all merged commits on the master branch that will be part of the next plo
 
 where X.Y.Z is the semver of most recent plotly.js release.
 
+## [2.30.1] -- 2024-03-15
+
+### Fixed
+ - Fix centering multi-line headers for treemap traces [[#6923](https://github.com/plotly/plotly.js/pull/6923)]
+ - Fix heatmap text color and `texttemplate` on cells with missing data [[#6924](https://github.com/plotly/plotly.js/pull/6924)]
+ - Fix scattergl rendering when colors include capital letters [[#6928](https://github.com/plotly/plotly.js/pull/6928)],
+   with thanks to @28raining and @dy for the contribution!
+
+
+## [2.30.0] -- 2024-03-06
+
+### Added
+- Add fill gradients for scatter traces [[#6905](https://github.com/plotly/plotly.js/pull/6905)],
+  with thanks to @lumip for the contribution!
+- Add `indentation` to legend [[#6874](https://github.com/plotly/plotly.js/pull/6874)],
+  with thanks to @my-tien for the contribution!
+
+### Fixed
+- Fix tooltip pointer position [[#6901](https://github.com/plotly/plotly.js/pull/6901)],
+  with thanks to @OBe95 for the contribution!
+- Fix standoff position [[#6889](https://github.com/plotly/plotly.js/pull/6889), [#6914](https://github.com/plotly/plotly.js/pull/6914)],
+  with thanks to @ayjayt for the contribution!
+- Fix resizing `pie` and `funnelarea` traces when textinfo is set to "none" [[#6893](https://github.com/plotly/plotly.js/pull/6893)],
+  with thanks to @robbtraister for the contribution!
+- Fix `insiderange` on category axes [[#6910](https://github.com/plotly/plotly.js/pull/6910)]
+- Fix display of "boundaries" `tickson` when `tickmode` is set to "array" [[#6912](https://github.com/plotly/plotly.js/pull/6912)]
+
+
 ## [2.29.1] -- 2024-02-12
 
 ### Fixed
