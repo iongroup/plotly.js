@@ -1,6 +1,6 @@
 /**
-* plotly.js (basic) v2.30.1-ion1
-* Copyright 2012-2025, Plotly, Inc.
+* plotly.js (basic) v2.30.1-ion2
+* Copyright 2012-2026, Plotly, Inc.
 * All rights reserved.
 * Licensed under the MIT license
 */
@@ -7317,6 +7317,7 @@ function paste(traceAttr, cd, cdAttr, fn) {
 "use strict";
 
 
+var isMobile = __webpack_require__(8232);
 var Registry = __webpack_require__(8332);
 var hover = (__webpack_require__(432).hover);
 module.exports = function click(gd, evt, subplot) {
@@ -7327,7 +7328,9 @@ module.exports = function click(gd, evt, subplot) {
   if (subplot !== undefined) {
     // The true flag at the end causes it to re-run the hover computation to figure out *which*
     // point is being clicked. Without this, clicking is somewhat unreliable.
-    hover(gd, evt, subplot, true);
+    hover(gd, evt, subplot, !isMobile({
+      tablet: true
+    }));
   }
   function emitClick() {
     gd.emit('plotly_click', {
@@ -61502,7 +61505,7 @@ function getSortFunc(opts, d2c) {
 
 
 // package version injected by `npm run preprocess`
-exports.version = '2.30.1-ion1';
+exports.version = '2.30.1-ion2';
 
 /***/ }),
 
