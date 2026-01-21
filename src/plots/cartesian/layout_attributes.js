@@ -902,7 +902,7 @@ module.exports = {
     },
     tickformat: {
         valType: 'any',
-        dflt: '',
+        dflt: null,
         editType: 'ticks',
         description: descriptionWithDates('tick label')
     },

@@ -47,9 +47,8 @@ module.exports = function handleTickLabelDefaults(containerIn, containerOut, coe
             }
         }
 
+        var tickFormat = coerce('tickformat');
         if(axType !== 'category') {
-            var tickFormat = coerce('tickformat');
-
             handleArrayContainerDefaults(containerIn, containerOut, {
                 name: 'tickformatstops',
                 inclusionAttr: 'enabled',

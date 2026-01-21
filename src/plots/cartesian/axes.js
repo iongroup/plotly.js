@@ -1667,8 +1667,10 @@ axes.tickText = function(ax, x, hover, noSuffixPrefix) {
     else formatLinear(ax, out, hover, extraPrecision, hideexp);
 
     var tickformat = axes.getTickFormat(ax);
-    if (typeof tickformat === "function") {
-        out.text = tickformat(out.text, out.x);
+    if(typeof tickformat === 'function') {
+        var formattedOut = tickformat(out.text, out.x);
+        out.text = formattedOut.text;
+        out.tooltip = formattedOut.tooltip;
     }
 
     // add prefix and suffix
@@ -1719,7 +1721,9 @@ axes.hoverLabelText = function(ax, values, hoverformat) {
     }
 
     var logOffScale = (ax.type === 'log' && val <= 0);
-    var tx = axes.tickText(ax, ax.c2l(logOffScale ? -val : val), 'hover').text;
+    var out = axes.tickText(ax, ax.c2l(logOffScale ? -val : val), 'hover');
+    var tx = out.text;
+    if(out.tooltip) tx = out.tooltip;
 
     if(logOffScale) {
         return val === 0 ? '0' : MINUS_SIGN + tx;
@@ -3495,6 +3499,13 @@ axes.drawLabels = function(gd, ax, opts) {
 
     tickLabels.enter().append('g')
         .classed(cls, 1)
+        .each(function(d) {
+            if(d.tooltip) {
+                var thisLabel = d3.select(this);
+                thisLabel.append('title').text(d.tooltip);
+                thisLabel.style('pointer-events', 'all');
+            }
+        })
         .append('text')
             // only so tex has predictable alignment that we can
             // alter later
