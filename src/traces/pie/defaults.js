@@ -57,6 +57,7 @@ function supplyDefaults(traceIn, traceOut, defaultColor, layout) {
         return Lib.coerce(traceIn, traceOut, attributes, attr, dflt);
     }
 
+    traceOut.numberFormatCallback = traceIn.numberFormatCallback;
     var labels = coerce('labels');
     var values = coerce('values');
 

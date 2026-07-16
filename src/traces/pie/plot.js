@@ -395,14 +395,29 @@ function attachFxHandlers(sliceTop, gd, cd) {
             pt.text = helpers.castOption(trace2.hovertext || trace2.text, pt.pts);
             if(hoverinfo && hoverinfo.indexOf('text') !== -1) {
                 var tx = pt.text;
+                if(trace2.numberFormatCallback) {
+                    tx = trace2.numberFormatCallback(tx, 'text').text;
+                }
                 if(Lib.isValidTextValue(tx)) text.push(tx);
             }
             pt.value = pt.v;
-            pt.valueLabel = helpers.formatPieValue(pt.v, separators);
-            if(hoverinfo && hoverinfo.indexOf('value') !== -1) text.push(pt.valueLabel);
-            pt.percent = pt.v / cd0.vTotal;
-            pt.percentLabel = helpers.formatPiePercent(pt.percent, separators);
-            if(hoverinfo && hoverinfo.indexOf('percent') !== -1) text.push(pt.percentLabel);
+
+            if(hoverinfo && hoverinfo.indexOf('value') !== -1) {
+                pt.valueLabel = helpers.formatPieValue(pt.v, separators);
+                if(trace2.numberFormatCallback) {
+                    pt.valueLabel = trace2.numberFormatCallback(pt.v, 'value').text;
+                }
+                text.push(pt.valueLabel);
+            }
+
+            if(hoverinfo && hoverinfo.indexOf('percent') !== -1) {
+                pt.percent = pt.v / cd0.vTotal;
+                pt.percentLabel = helpers.formatPiePercent(pt.percent, separators);
+                if(trace2.numberFormatCallback) {
+                    pt.percentLabel = trace2.numberFormatCallback(pt.percent, 'percent').text;
+                }
+                text.push(pt.percentLabel);
+            }
 
             var hoverLabel = trace2.hoverlabel;
             var hoverFont = hoverLabel.font;
@@ -1108,7 +1123,7 @@ function formatSliceLabel(gd, pt, cd0) {
     var textinfo = trace.textinfo;
     if(!texttemplate && textinfo && textinfo !== 'none') {
         var parts = textinfo.split('+');
-        var hasFlag = function(flag) { return parts.indexOf(flag) !== -1; };
+        var hasFlag = function (flag) { return parts.indexOf(flag) !== -1; };
         var hasLabel = hasFlag('label');
         var hasText = hasFlag('text');
         var hasValue = hasFlag('value');
@@ -1120,10 +1135,35 @@ function formatSliceLabel(gd, pt, cd0) {
         text = hasLabel ? [pt.label] : [];
         if(hasText) {
             var tx = helpers.getFirstFilled(trace.text, pt.pts);
-            if(isValidTextValue(tx)) text.push(tx);
+            if(isValidTextValue(tx)) {
+                if(trace.numberFormatCallback) {
+                    tx = trace.numberFormatCallback(tx, 'text').text;
+                }
+
+                text.push(tx);
+            }
         }
-        if(hasValue) text.push(helpers.formatPieValue(pt.v, separators));
-        if(hasPercent) text.push(helpers.formatPiePercent(pt.v / cd0.vTotal, separators));
+
+        if(hasValue) {
+            var valueText = helpers.formatPieValue(pt.v, separators);
+
+            if(trace.numberFormatCallback) {
+                valueText = trace.numberFormatCallback(pt.v, 'value').text;
+            }
+
+            text.push(valueText);
+        }
+
+        if(hasPercent) {
+            var percentText = helpers.formatPiePercent(pt.v / cd0.vTotal, separators);
+
+            if(trace.numberFormatCallback) {
+                percentText = trace.numberFormatCallback(pt.v / cd0.vTotal, 'percent').text;
+            }
+
+            text.push(percentText);
+        }
+
         pt.text = text.join('<br>');
     }
 
